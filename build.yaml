@@ -1,0 +1,35 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          schema: calendar|lib/graphql/schema.graphql
+
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          schema: calendar|lib/graphql/schema.graphql
+
+
+      json_serializable:
+        options:
+          explicit_to_json: true
+
+      hive_generator:hive_generator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/src/**/**_model.dart
+
+      freezed|freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/src/**/**_error.dart
+            - lib/src/**/**_exception.dart
+            - lib/src/**/**_entity.dart
+            - lib/src/**/**_model.dart
+            - lib/src/**/**_bloc.dart
+            - lib/src/**/**_cubit.dart
+            - lib/src/**/field.dart
