@@ -1,10 +1,4 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 
 import '../errors/app_error.dart';
 

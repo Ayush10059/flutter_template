@@ -1,9 +1,12 @@
+import 'package:envied/envied.dart';
+
 import '../base/env.dart';
+import '../constants/env_keys.dart';
 
+part 'staging_env.g.dart';
+
+@Envied(name: EnvKeys.stageEnv, path: EnvKeys.stageEnvPath)
 class StagingEnv extends EnvVars {
-  @override
-  String get baseUrl => '';
-
-  @override
-  String get graphqlEndPoint => '/graphql';
+  @EnviedField(varName: EnvKeys.baseUrlKey, obfuscate: true)
+  String baseUrl = _StagingEnv.baseUrl;
 }

@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:dio/dio.dart';
 import 'package:ferry/ferry.dart';
 import 'package:calendar/src/core/base/env.dart';
@@ -26,7 +20,7 @@ abstract class RegisterModules {
 
   @lazySingleton
   Dio dio(AuthInterceptor authInterceptor) => Dio(BaseOptions(
-        baseUrl: Env().baseUrl,
+        baseUrl: Env.instance.baseUrl,
         receiveTimeout: const Duration(seconds: 60),
         connectTimeout: const Duration(seconds: 60),
         responseType: ResponseType.json,
@@ -43,7 +37,7 @@ abstract class RegisterModules {
   @lazySingleton
   Client client(Dio dio) {
     return Client(
-      link: DioLink(Env().graphqlEndPoint, client: dio),
+      link: DioLink(Env.instance.baseUrl, client: dio),
       defaultFetchPolicies: {
         OperationType.query: FetchPolicy.NetworkOnly,
         OperationType.mutation: FetchPolicy.NetworkOnly,

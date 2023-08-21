@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'dart:async';
 
 import 'package:dio/dio.dart';
@@ -17,7 +11,7 @@ import 'package:injectable/injectable.dart';
 class TokenService {
   TokenService(this._storage) {
     final _dio = Dio(BaseOptions(
-      baseUrl: Env().baseUrl,
+      baseUrl: Env.instance.baseUrl,
       receiveTimeout: const Duration(seconds: 60),
       connectTimeout: const Duration(seconds: 60),
       responseType: ResponseType.json,
@@ -28,7 +22,7 @@ class TokenService {
     ));
 
     _client = Client(
-      link: DioLink(Env().graphqlEndPoint, client: _dio),
+      link: DioLink(Env.instance.baseUrl, client: _dio),
       defaultFetchPolicies: {
         OperationType.query: FetchPolicy.NetworkOnly,
         OperationType.mutation: FetchPolicy.NetworkOnly,
@@ -41,6 +35,5 @@ class TokenService {
 
   Future<void> refreshToken() async {
     //TODO: implement your own logics for refresh token
-    final refreshToken = _storage.getSession()?.refreshToken;
   }
 }

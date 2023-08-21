@@ -7,5 +7,7 @@
   "passwordHint": "Enter Password",
   "email": "Email Address",
   "password": "Password",
-  "serverError": "Server Error"
+  "serverError": "Server Error",
+  "noInternet":"No Internet Connection",
+  "unAuthorizedAccess":"UnAuthorized Access"
 }

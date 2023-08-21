@@ -1,22 +1,21 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'bootstrap.dart';
-import 'src/app/app.dart';
+import 'src/core/base/env.dart';
 import 'src/core/envs/production_env.dart';
-import 'src/core/helpers/device_info_helper.dart';
 
-void main() async {
-  final binding = WidgetsFlutterBinding.ensureInitialized();
-  final isBelowAndroid12 = await DeviceInfoHelper.instance.isBelowAndroid12();
-  if (isBelowAndroid12) FlutterNativeSplash.preserve(widgetsBinding: binding);
-  await bootstrap(
-    () => App(),
-    env: ProductionEnv(),
-  );
+/// Bootstraps project with early initialization
+/// with [ProductionEnv()] Environment configurations
+void main() {
+  runZonedGuarded(() {
+    final binding = WidgetsFlutterBinding.ensureInitialized();
+    FlutterNativeSplash.preserve(widgetsBinding: binding);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    bootstrap(createEnv: () => Env.instance.createEnv(ProductionEnv()));
+  }, (Object error, StackTrace stackTrace) => print('error'));
 }

@@ -1,12 +1,6 @@
-/*
- * Copyright (c) 2022
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:ferry/ferry.dart';
-import 'package:calendar/localization/l10n.dart';
 
+import '../../../localization/l10n.dart';
 import '../errors/api_exception.dart';
 import '../logging/logger.dart';
 

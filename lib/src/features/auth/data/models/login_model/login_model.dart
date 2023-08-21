@@ -1,11 +1,7 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_local_storage/hive_local_storage.dart';
+
+import '../user_model/user_model.dart';
 
 part 'login_model.freezed.dart';
 part 'login_model.g.dart';
@@ -17,7 +13,7 @@ class LoginModel with _$LoginModel {
   const factory LoginModel({
     required String accessToken,
     required String refreshToken,
-    required int expiresIn,
+    required UserModel userModel,
   }) = _LoginModel;
 
   factory LoginModel.fromJson(Map<String, dynamic> json) =>

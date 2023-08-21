@@ -1,28 +1,26 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
+import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:logging/logging.dart';
 
 import 'bootstrap.dart';
-import 'src/app/app.dart';
+import 'src/core/base/env.dart';
 import 'src/core/envs/development_env.dart';
-import 'src/core/helpers/device_info_helper.dart';
 
-void main() async {
-  final binding = WidgetsFlutterBinding.ensureInitialized();
-  final isBelowAndroid12 = await DeviceInfoHelper.instance.isBelowAndroid12();
-  if (isBelowAndroid12) FlutterNativeSplash.preserve(widgetsBinding: binding);
-  if (kDebugMode) {
-    Logger.root.level = Level.ALL;
-  }
-  await bootstrap(
-    () => App(),
-    env: DevelopmentEnv(),
-  );
+/// Bootstraps project with early initialization
+/// with [DevelopmentEnv()] Environment configurations
+void main() => runZonedGuarded(() {
+      // enableFlutterDriverExtension();
+      final binding = WidgetsFlutterBinding.ensureInitialized();
+      FlutterNativeSplash.preserve(widgetsBinding: binding);
+      bootstrap(
+        createEnv: () => Env.instance.createEnv(DevelopmentEnv()),
+        intRootLogger: _initRootLogger,
+      );
+    }, (Object error, StackTrace stackTrace) => print('error'));
+
+/// Initialize top level root Logger
+_initRootLogger() {
+  Logger.root.level = Level.ALL;
 }

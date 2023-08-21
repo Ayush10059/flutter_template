@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -17,13 +11,13 @@ class SvgImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit = BoxFit.contain,
-    this.color,
+    this.colorFilter,
   }) : child = SvgPicture.asset(
           url,
           width: width,
           height: height,
           fit: fit,
-          color: color,
+          colorFilter: colorFilter,
         );
 
   SvgImage.network(
@@ -32,13 +26,13 @@ class SvgImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit = BoxFit.contain,
-    this.color,
+    this.colorFilter,
   }) : child = SvgPicture.network(
           url,
           width: width,
           height: height,
           fit: fit,
-          color: color,
+          colorFilter: colorFilter,
         );
 
   SvgImage.file(
@@ -47,13 +41,13 @@ class SvgImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit = BoxFit.contain,
-    this.color,
+    this.colorFilter,
   }) : child = SvgPicture.file(
           file,
           width: width,
           height: height,
           fit: fit,
-          color: color,
+          colorFilter: colorFilter,
         );
 
   SvgImage.memory(
@@ -62,18 +56,19 @@ class SvgImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit = BoxFit.contain,
-    this.color,
+    this.colorFilter,
   }) : child = SvgPicture.memory(
           bytes,
           width: width,
           height: height,
           fit: fit,
-          color: color,
+          colorFilter: colorFilter,
         );
+
   final double? width;
   final double? height;
   final BoxFit fit;
-  final Color? color;
+  final ColorFilter? colorFilter;
 
   final Widget child;
 

@@ -16,14 +16,17 @@ dependencies:
   cupertino_icons: ^1.0.5
 
   #router
-  auto_route: ^5.0.4
+  auto_route: ^7.8.0
+
+  #env
+  envied: ^0.3.0+3
 
   #dependency injection
-  get_it: ^7.2.0
-  injectable: ^2.1.0
+  get_it: ^7.6.0
+  injectable: ^2.3.0
 
   #state management
-  flutter_bloc: ^8.1.2
+  flutter_bloc: ^8.1.3
 
   #adaptive sizes
   adaptive_sizer:
@@ -31,72 +34,69 @@ dependencies:
       url: https://github.com/kishor98100/adaptive_sizer
 
   #data models
-  freezed_annotation: ^2.2.0
-  json_annotation: ^4.8.0
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
   equatable: ^2.0.5
 
   #functional programmings
-  dartz: ^0.10.1
-
-
+  fpdart: ^1.1.0
 
   #network requests
-  dio: ^5.0.1
-  gql_dio_link: ^0.3.0
-  ferry: ^0.14.0+1
+  dio: ^5.3.2
+  gql_dio_link: ^1.0.1
+  ferry: ^0.14.2+1
 
   #Session
-  hive_local_storage: ^1.0.3+1
+  hive_local_storage: ^1.0.6
 
   #logger
-  logger: ^1.2.2
+  logger: ^2.0.1
 
   # google fonts
-  google_fonts: ^4.0.3
-
+  google_fonts: ^5.1.0
 
   #native splash
-  flutter_native_splash: ^2.2.19
+  flutter_native_splash: ^2.3.2
 
   #image and svg renderer
   cached_network_image: ^3.2.3
-  flutter_svg: ^2.0.2
-
- 
+  flutter_svg: ^2.0.7
 
   #device info plus
-  device_info_plus: ^8.1.0
-
+  device_info_plus: ^9.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.1
+  flutter_lints: ^2.0.2
 
   #generators
-  build_runner: ^2.3.3
+  build_runner: ^2.4.6
 
-  json_serializable: ^6.6.1
-  freezed: ^2.3.2
+  json_serializable: ^6.7.1
+  freezed: ^2.4.1
   hive_generator: ^2.0.0
-  injectable_generator: ^2.1.4
+
+  injectable_generator: ^2.4.0
 
   # route generator
-  auto_route_generator: ^5.0.3
+  auto_route_generator: ^7.3.1
 
   # ferry generator
-  ferry_generator: ^0.8.0+1
+  ferry_generator: ^0.8.1
 
   #test packages
-  mocktail: ^0.3.0
-  bloc_test: ^9.1.1
-  # launcher icons
-  flutter_launcher_icons: ^0.12.0
+  mocktail: ^1.0.0
+  bloc_test: ^9.1.4
 
-dependency_overrides: 
+  # launcher icons
+  flutter_launcher_icons: ^0.13.1
+  envied_generator: ^0.3.0+3
+
+dependency_overrides:
   path: ^1.8.3
- 
+
 flutter:
   uses-material-design: true
   assets:
@@ -104,14 +104,12 @@ flutter:
     - assets/icons/
     - google_fonts/
 
-
 flutter_intl:
   enabled: true
   class_name: AppLocalizations
   main_locale: en
   arb_dir: lib/localization/arb
   output_dir: lib/localization/generated
-
 
 flutter_native_splash:
   color: "#ffffff"

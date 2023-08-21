@@ -1,24 +1,21 @@
-import 'dart:async';
+abstract class EnvVars {
+  String get baseUrl;
+}
 
 class Env implements EnvVars {
   Env._();
 
-  factory Env() => _instance;
-  static final Env _instance = Env._();
+  static Env? _instance;
+  late EnvVars _env;
 
-  late EnvVars _vars;
+  /// Returns an instance using the default [Env].
+  static Env get instance {
+    _instance ??= Env._();
+    return _instance!;
+  }
 
-  FutureOr<void> loadVars(EnvVars vars) => _vars = vars;
+  void createEnv(EnvVars incomingEnv) => _env = incomingEnv;
 
   @override
-  String get baseUrl => _vars.baseUrl;
-
-  @override
-  String get graphqlEndPoint => _vars.graphqlEndPoint;
-}
-
-abstract class EnvVars {
-  String get baseUrl;
-
-  String get graphqlEndPoint;
+  String get baseUrl => _env.baseUrl;
 }

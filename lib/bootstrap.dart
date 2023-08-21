@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -12,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'src/core/base/env.dart';
+import 'src/app/app.dart';
 import 'src/core/di/injector.dart';
 import 'src/core/logging/logger.dart';
 
@@ -30,23 +24,21 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(
-  FutureOr<Widget> Function() builder, {
-  required EnvVars env,
+Future<void> bootstrap({
+  required Function() createEnv,
+  Function()? intRootLogger,
 }) async {
   Bloc.observer = AppBlocObserver();
   GoogleFonts.config.allowRuntimeFetching = false;
   FlutterError.onError = (FlutterErrorDetails details) {
-    logger.e(details.exceptionAsString(), details.exception, details.stack);
+    logger.e(details.exceptionAsString());
   };
-  await Env().loadVars(env);
+  await createEnv();
   _addFontsLicenses();
   await configureInjection();
-  await runZonedGuarded(
-    () async => runApp(await builder()),
-    (Object error, StackTrace stackTrace) =>
-        logger.e(error.toString(), error, stackTrace),
-  );
+
+  /// Runs error on own error zone
+  Future.delayed(const Duration(milliseconds: 400), () => runApp(App()));
 }
 
 void _addFontsLicenses() {

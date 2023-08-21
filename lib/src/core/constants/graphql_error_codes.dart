@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 abstract class GraphqlErrorCodes {
   static const String unAuthenticated = 'UNAUTHENTICATED';
   static const String parse = 'GRAPHQL_PARSE_FAILED';

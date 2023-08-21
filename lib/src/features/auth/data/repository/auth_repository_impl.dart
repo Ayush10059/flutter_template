@@ -1,16 +1,12 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
-import 'package:dartz/dartz.dart';
 import 'package:calendar/src/core/base/base_repository.dart';
 import 'package:calendar/src/core/typedefs/typedefs.dart';
+import 'package:calendar/src/features/auth/data/models/login_model/login_model.dart';
 import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/constants/storage_keys.dart';
 import '../../domain/repository/auth_repository.dart';
+import '../models/login_request_dto/login_request_dto.dart';
 import '../source/auth_remote_source.dart';
 
 @LazySingleton(as: AuthRepository)
@@ -21,15 +17,24 @@ class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
   final LocalStorage _storage;
 
   @override
-  EitherResponse<String> login(Map<String, dynamic> values) async {
-    return await handleNetworkCall<Unit, String>(
-      call: _remoteSource.login(values),
-      onSuccess: (loginModel) {
-        return 'Success';
-      },
-    );
-  }
+  Stream<bool> get isLoggedIn => _storage.onSessionChange.map((event) => event);
 
   @override
-  bool get isLoggedIn => _storage.hasSession;
+  EitherResponse<String> login(LoginRequestDto loginRequestDto) async =>
+      await handleNetworkCall(
+        call: _remoteSource.login(loginRequestDto),
+        onSuccess: (loginModel) {
+          _storage.put(
+            key: StorageKeys.authKey,
+            value: loginModel.userModel,
+          );
+
+          _storage.saveToken(
+            loginModel.accessToken,
+            loginModel.refreshToken,
+          );
+// TODO:
+          return 'Success';
+        },
+      );
 }

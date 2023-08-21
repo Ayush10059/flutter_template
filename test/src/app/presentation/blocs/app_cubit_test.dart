@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:bloc_test/bloc_test.dart';
 import 'package:calendar/src/app/presentation/blocs/app/app_cubit.dart';
 import 'package:calendar/src/core/helpers/device_info_helper.dart';

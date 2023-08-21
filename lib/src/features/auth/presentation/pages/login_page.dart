@@ -1,10 +1,5 @@
-/*
- * Copyright (c) 2022
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:adaptive_sizer/adaptive_sizer.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:calendar/localization/l10n.dart';
@@ -18,6 +13,7 @@ import 'package:calendar/src/core/widgets/widgets.dart';
 import '../blocs/login/login_cubit.dart';
 import '../blocs/login_form/login_form_cubit.dart';
 
+@RoutePage()
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -45,7 +41,7 @@ class LoginPage extends StatelessWidget {
                 },
                 success: (message) {
                   context.showSnackbar(
-                      title: l10n.login, message: message, error: true);
+                      title: l10n.login, message: 'message', error: true);
                   getIt<AppRouter>().replaceAll([const DashboardRoute()]);
                 },
               );
@@ -74,7 +70,9 @@ class LoginPage extends StatelessWidget {
                             orElse: () => false, loading: () => true));
                     return CustomButton(
                       onPressed: () {
-                        context.read<LoginCubit>().login(state.values);
+                        context
+                            .read<LoginCubit>()
+                            .login(context.read<LoginFormCubit>().getLoginDto);
                       },
                       isDisabled: !state.isValid,
                       loading: loading,

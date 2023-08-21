@@ -1,12 +1,10 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:calendar/src/core/typedefs/typedefs.dart';
 
+import '../../data/models/login_model/login_model.dart';
+import '../../data/models/login_request_dto/login_request_dto.dart';
+
 abstract class AuthRepository {
-  bool get isLoggedIn;
-  EitherResponse<String> login(Map<String, dynamic> values);
+  Stream<bool> get isLoggedIn;
+
+  EitherResponse<String> login(LoginRequestDto loginRequestDto);
 }

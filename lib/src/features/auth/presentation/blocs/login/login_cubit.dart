@@ -1,34 +1,25 @@
-/*
- * Copyright (c) 2022.
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
-import 'package:bloc/bloc.dart';
+import 'package:calendar/src/features/auth/data/models/login_request_dto/login_request_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/base/base_bloc.dart';
 import '../../../domain/repository/auth_repository.dart';
 
 part 'login_cubit.freezed.dart';
 part 'login_state.dart';
 
 @injectable
-class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._repository) : super(const LoginState.initial());
+class LoginCubit extends BaseCubit<LoginState> {
+  LoginCubit(this._authRepository) : super(const LoginState.initial());
 
-  final AuthRepository _repository;
+  final AuthRepository _authRepository;
 
-  void login(Map<String, dynamic> values) async {
+  void login(LoginRequestDto loginRequestDto) async {
     emit(const LoginState.loading());
-    final response = await _repository.login(values);
-    emit(response.fold(
-      (error) => error.when(
-        serverError: (message) => LoginState.error(message: message),
-        noInternet: () =>
-            const LoginState.error(message: 'No Internet Connection'),
-      ),
-      (message) => LoginState.success(message: message),
-    ));
+    handleBusinessLogic(
+      call: _authRepository.login(loginRequestDto),
+      onSuccess: (message) => LoginState.success(message: message),
+      onFailure: (error) => LoginState.error(message: error),
+    );
   }
 }
