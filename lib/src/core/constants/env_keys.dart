@@ -1,8 +1,3 @@
-/*
-* @Author:Jiten Basnet on 19/05/2023
-* @Company: EB Pearls
-*/
-
 class EnvKeys {
   EnvKeys._();
   static const String devEnv = 'DevelopmentEnv';

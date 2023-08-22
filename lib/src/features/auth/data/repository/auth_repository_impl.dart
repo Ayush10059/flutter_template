@@ -1,10 +1,9 @@
-import 'package:calendar/src/core/base/base_repository.dart';
-import 'package:calendar/src/core/typedefs/typedefs.dart';
-import 'package:calendar/src/features/auth/data/models/login_model/login_model.dart';
 import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/base/base_repository.dart';
 import '../../../../core/constants/storage_keys.dart';
+import '../../../../core/typedefs/typedefs.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../models/login_request_dto/login_request_dto.dart';
 import '../source/auth_remote_source.dart';

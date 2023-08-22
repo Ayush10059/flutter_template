@@ -10,5 +10,6 @@ class AppRouter extends $AppRouter {
   final List<AutoRoute> routes = [
     AutoRoute(page: LoginRoute.page),
     AutoRoute(page: DashboardRoute.page),
+    AutoRoute(page: CalendarRoute.page),
   ];
 }

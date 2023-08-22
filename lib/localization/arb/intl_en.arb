@@ -8,6 +8,9 @@
   "email": "Email Address",
   "password": "Password",
   "serverError": "Server Error",
-  "noInternet":"No Internet Connection",
-  "unAuthorizedAccess":"UnAuthorized Access"
+  "noInternet": "No Internet Connection",
+  "unAuthorizedAccess": "UnAuthorized Access",
+  "today": "Today",
+  "calendarSyncSuccessful": "Calendar sync successful",
+  "unexpectedError": "Unexpected Error"
 }
