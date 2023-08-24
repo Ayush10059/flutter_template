@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:calendar/src/features/calendar/domain/model/event.dart';
+import 'package:calendar/src/features/calendar/domain/models/event.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 

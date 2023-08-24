@@ -2,7 +2,7 @@ import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../domain/model/event.dart';
+import '../../domain/models/event.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({

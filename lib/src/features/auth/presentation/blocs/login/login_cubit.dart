@@ -14,7 +14,7 @@ class LoginCubit extends BaseCubit<LoginState> {
 
   final AuthRepository _authRepository;
 
-  void login(LoginRequestDto loginRequestDto) async {
+  void login(LoginRequestDto loginRequestDto) {
     emit(const LoginState.loading());
     handleBusinessLogic(
       call: _authRepository.login(loginRequestDto),

@@ -1,7 +1,7 @@
+import 'package:eb_core_flutter/eb_core_flutter.dart';
 import 'package:ferry/ferry.dart';
 
 import '../../../localization/l10n.dart';
-import '../errors/api_exception.dart';
 import '../logging/logger.dart';
 
 class BaseRemoteSource {
@@ -23,7 +23,7 @@ class BaseRemoteSource {
     } else if (response.data != null) {
       return response.data!;
     } else {
-      throw ApiException.serverException(message: l10n.serverError);
+      throw ApiException.response(l10n.serverError);
     }
   }
 }
@@ -35,14 +35,13 @@ extension ApiExceptionXGraphQl<TData, TVars>
     if (graphqlErrors?.isNotEmpty ?? false) {
       // we are interested for first error only
       final firstError = graphqlErrors!.first;
-      return ApiException.serverException(message: firstError.message);
+      return ApiException.response(firstError.message);
     } else if (linkException != null) {
       logger.d(linkException?.originalException.toString());
-      return ApiException.serverException(
-          message:
-              linkException?.originalException.toString() ?? l10n.serverError);
+      return ApiException.response(
+          linkException?.originalException.toString() ?? l10n.serverError);
     } else {
-      return ApiException.serverException(message: l10n.serverError);
+      return ApiException.response(l10n.serverError);
     }
   }
 }

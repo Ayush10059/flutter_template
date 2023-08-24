@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:remixicon/remixicon.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../localization/l10n.dart';
@@ -47,7 +48,7 @@ class CalendarHeader extends StatelessWidget {
                   ),
                 ),
                 Icon(
-                  Icons.arrow_drop_down,
+                  Remix.arrow_drop_down_line,
                   color: Theme.of(context).colorScheme.primary,
                   size: 24,
                 )
@@ -68,7 +69,7 @@ class CalendarHeader extends StatelessWidget {
                   onLeftArrowTap();
                 },
                 child: const Icon(
-                  Icons.keyboard_arrow_left,
+                  Remix.arrow_left_s_line,
                   size: 32,
                 ),
               ),
@@ -77,7 +78,7 @@ class CalendarHeader extends StatelessWidget {
                   onRightArrowTap();
                 },
                 child: const Icon(
-                  Icons.keyboard_arrow_right,
+                  Remix.arrow_right_s_line,
                   size: 32,
                 ),
               ),

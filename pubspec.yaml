@@ -5,7 +5,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -71,11 +71,28 @@ dependencies:
 
   #calendar
   table_calendar: ^3.0.8
+
   # device_calendar: ^4.3.1
   month_picker_dialog: ^2.0.0
 
   #animation
   flutter_animate: ^4.1.1+1
+
+  #icons
+  remixicon: ^1.0.0
+
+  #google
+  googleapis: ^11.4.0
+  googleapis_auth: ^1.4.1
+
+  #eb
+  eb_core_flutter:
+    git:
+      url: git@bitbucket.org:ebpearls28/eb_core_flutter.git
+      ref: v0.0.4
+
+  #firebase
+  firebase_core: ^2.15.1
 
 dev_dependencies:
   flutter_test:

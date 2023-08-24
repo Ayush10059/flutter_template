@@ -1,7 +1,6 @@
+import 'package:calendar/src/core/exceptions/xception.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
-
-import '../errors/app_error.dart';
 
 import '../../../localization/l10n.dart';
 
@@ -17,7 +16,7 @@ abstract class BaseCubit<State> extends Cubit<State> {
   /// and emits either success or failure states.
 
   Future<void> handleBusinessLogic<R>({
-    required Future<Either<AppError, R>> call,
+    required TaskEither<Xception, R> call,
     required Function(R data) onSuccess,
     required Function(String error) onFailure,
   }) async {
@@ -26,11 +25,10 @@ abstract class BaseCubit<State> extends Cubit<State> {
     emit(
       response.fold(
         (error) => error.when(
-          serverError: (message) => onFailure(message),
-          noInternet: () => onFailure(l10n.noInternet),
-          unAuthorized: () => onFailure(l10n.unAuthorizedAccess),
-          validationsError: (message) => onFailure(message),
-          unAuthenticated: () => onFailure(l10n.unAuthorizedAccess),
+          network: (network) => onFailure(l10n.noInternet),
+          local: (local) => onFailure(l10n.unAuthorizedAccess),
+          unsupportedPlatform: () => onFailure(l10n.unexpectedError),
+          other: (other) => onFailure(l10n.unexpectedError),
         ),
         (result) => onSuccess(result),
       ),

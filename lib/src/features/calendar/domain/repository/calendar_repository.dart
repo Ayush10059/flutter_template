@@ -1,4 +1,4 @@
-import '../model/event.dart';
+import '../models/event.dart';
 
 abstract class CalendarRepository {
   Stream<List<Event>> events();

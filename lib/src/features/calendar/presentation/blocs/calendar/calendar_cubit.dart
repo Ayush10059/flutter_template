@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../domain/model/event.dart';
+import '../../../domain/models/event.dart';
 import '../../../domain/repository/calendar_repository.dart';
 
 part 'calendar_cubit.freezed.dart';

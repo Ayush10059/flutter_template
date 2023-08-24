@@ -19,8 +19,8 @@ class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
   Stream<bool> get isLoggedIn => _storage.onSessionChange.map((event) => event);
 
   @override
-  EitherResponse<String> login(LoginRequestDto loginRequestDto) async =>
-      await handleNetworkCall(
+  EitherXeption<String> login(LoginRequestDto loginRequestDto) =>
+      handleNetworkCall(
         call: _remoteSource.login(loginRequestDto),
         onSuccess: (loginModel) {
           _storage.put(

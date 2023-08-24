@@ -1,42 +1,25 @@
+import 'package:calendar/src/core/exceptions/xception.dart';
 import 'package:fpdart/fpdart.dart';
-import '../errors/app_error.dart';
 
-import '../errors/api_exception.dart';
-import '../logging/logger.dart';
-import '../typedefs/typedefs.dart';
+import '../network/xception_mixin.dart';
 
-/// {@template base_repository}
-/// A [BaseRepository] class for handling network status and exceptions
-/// {@endtemplate}
-abstract class BaseRepository {
+abstract class BaseRepository with XceptionMixin {
   const BaseRepository();
 
-  ///
-  /// [T] is Return type for [EitherResponse]
+  /// [T] is Return type for [EitherXception]
   ///
   /// [R] is response type from server that is params for [onSuccess] callback
   ///
   /// [onSuccess] callback returns the [T] and accept [R]
-  ///
-  EitherResponse<T> handleNetworkCall<R, T>({
+  TaskEither<Xception, T> handleNetworkCall<R, T>({
     required Future<R> call,
     required T Function(R data) onSuccess,
-  }) async {
-    try {
-      final data = await call;
-      return right(onSuccess(data));
-    } on ApiException catch (e) {
-      logger.e(e);
-      return left(
-        e.when(
-          serverException: (message) => AppError.serverError(message: message),
-          unprocessableEntity: (errors) =>
-              AppError.validationsError(message: errors),
-          unAuthorized: () => const AppError.unAuthorized(),
-          network: () => const AppError.noInternet(),
-          unAuthenticated: () => const AppError.unAuthenticated(),
-        ),
+  }) =>
+      TaskEither.tryCatch(
+        () async {
+          final data = await call;
+          return onSuccess(data);
+        },
+        (error, stackTrace) => getXception(error, stackTrace),
       );
-    }
-  }
 }

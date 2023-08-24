@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 
 import '../../../../core/di/injector.dart';
 import '../../../../core/routes/app_router.dart';
@@ -16,7 +17,7 @@ class DashboardPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () => getIt<AppRouter>().push(const CalendarRoute()),
-            icon: const Icon(Icons.calendar_month),
+            icon: const Icon(Remix.calendar_2_line),
           )
         ],
       ),

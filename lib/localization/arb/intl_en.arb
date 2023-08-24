@@ -12,5 +12,16 @@
   "unAuthorizedAccess": "UnAuthorized Access",
   "today": "Today",
   "calendarSyncSuccessful": "Calendar sync successful",
-  "unexpectedError": "Unexpected Error"
+  "unexpectedError": "Unexpected Error",
+  "networkExceptionConnection": "Connection failed. Please check you have working internet connection.",
+  "networkExceptionTimeout": "It took to long to complete the request please try again.",
+  "networkExceptionUnexpected": "Something went wrong while connecting to server.",
+  "xceptionUnexpected": "Something went wrong.",
+  "xceptionUnsupportedPlatform": "Unsupported platform",
+  "xceptionCalendarNoPermission": "No permission to access calendar.",
+  "xceptionCalendarRetrieve": "Unable to retrieve calendars.",
+  "xceptionCalendarEventAdd": "Unable to add event.",
+  "locationNotEnabled": "Location is not enabled.",
+  "locationExceptionDenied": "Location permissions are denied.",
+  "locationExceptionDeniedForever": "Location permissions are permanently denied. Please grant permission from device settings."
 }

@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../errors/app_error.dart';
+import '../exceptions/xception.dart';
 
-typedef EitherResponse<T> = Future<Either<AppError, T>>;
+typedef EitherXeption<T> = TaskEither<Xception, T>;

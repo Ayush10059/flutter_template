@@ -9,6 +9,7 @@ import 'package:calendar/src/core/form/field.dart';
 import 'package:calendar/src/core/routes/app_router.dart';
 import 'package:calendar/src/core/themes/theme.dart';
 import 'package:calendar/src/core/widgets/widgets.dart';
+import 'package:remixicon/remixicon.dart';
 
 import '../blocs/login/login_cubit.dart';
 import '../blocs/login_form/login_form_cubit.dart';
@@ -111,7 +112,7 @@ class _PasswordField extends StatelessWidget {
             suffixIcon: IconButton(
               onPressed: context.read<LoginFormCubit>().togglePassword,
               icon: Icon(
-                  state.obscureText ? Icons.visibility : Icons.visibility_off),
+                  state.obscureText ? Remix.eye_line : Remix.eye_close_line),
             ),
           ),
         );
