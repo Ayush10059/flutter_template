@@ -5,5 +5,7 @@ import '../../data/models/login_request_dto/login_request_dto.dart';
 abstract class AuthRepository {
   Stream<bool> get isLoggedIn;
 
-  EitherXeption<String> login(LoginRequestDto loginRequestDto);
+  EitherXception<String> login(LoginRequestDto loginRequestDto);
+
+  EitherXception<String> logout();
 }

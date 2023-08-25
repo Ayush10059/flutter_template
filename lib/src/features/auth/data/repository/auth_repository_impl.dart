@@ -1,7 +1,7 @@
+import 'package:calendar/src/core/network/xception_mixin.dart';
 import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/base/base_repository.dart';
 import '../../../../core/constants/storage_keys.dart';
 import '../../../../core/typedefs/typedefs.dart';
 import '../../domain/repository/auth_repository.dart';
@@ -9,7 +9,7 @@ import '../models/login_request_dto/login_request_dto.dart';
 import '../source/auth_remote_source.dart';
 
 @LazySingleton(as: AuthRepository)
-class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
+class AuthRepositoryImpl with XceptionMixin implements AuthRepository {
   AuthRepositoryImpl(this._remoteSource, this._storage);
 
   final AuthRemoteSource _remoteSource;
@@ -18,11 +18,12 @@ class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
   @override
   Stream<bool> get isLoggedIn => _storage.onSessionChange.map((event) => event);
 
+// TODO: return model
   @override
-  EitherXeption<String> login(LoginRequestDto loginRequestDto) =>
-      handleNetworkCall(
-        call: _remoteSource.login(loginRequestDto),
-        onSuccess: (loginModel) {
+  EitherXception<String> login(LoginRequestDto loginRequestDto) => tryCatch(
+        () async {
+          final loginModel = await _remoteSource.login(loginRequestDto);
+
           _storage.put(
             key: StorageKeys.authKey,
             value: loginModel.userModel,
@@ -32,8 +33,21 @@ class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
             loginModel.accessToken,
             loginModel.refreshToken,
           );
-// TODO:
-          return 'Success';
+
+          return 'login Success';
         },
       );
+
+  @override
+  EitherXception<String> logout() {
+    return tryCatch(
+      () async {
+        await _remoteSource.logout();
+
+        _storage.clearSession();
+
+        return 'logout Success';
+      },
+    );
+  }
 }

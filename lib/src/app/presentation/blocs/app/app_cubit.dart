@@ -28,6 +28,5 @@ class AppCubit extends Cubit<AppState> {
     FlutterNativeSplash.remove();
   }
 
-// TODO:
-  // Future<void> logout() async => _authRepository.logout();
+  Future<void> logout() async => _authRepository.logout();
 }

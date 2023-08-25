@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'firebase_options.dart';
 import 'src/app/app.dart';
 import 'src/core/di/injector.dart';
 import 'src/core/logging/logger.dart';
@@ -27,6 +29,7 @@ class AppBlocObserver extends BlocObserver {
 Future<void> bootstrap({
   required Function() createEnv,
   Function()? intRootLogger,
+  FirebaseOptions? firebaseOptions,
 }) async {
   Bloc.observer = AppBlocObserver();
   GoogleFonts.config.allowRuntimeFetching = false;
@@ -34,6 +37,8 @@ Future<void> bootstrap({
     logger.e(details.exceptionAsString());
   };
   await createEnv();
+  await Firebase.initializeApp(options: firebaseOptions);
+
   _addFontsLicenses();
   await configureInjection();
 

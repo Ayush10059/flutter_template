@@ -8,6 +8,7 @@ import '../models/user_model/user_model.dart';
 
 abstract class AuthRemoteSource {
   Future<LoginModel> login(LoginRequestDto loginRequestDto);
+  Future<void> logout();
 }
 
 @LazySingleton(as: AuthRemoteSource)
@@ -27,5 +28,10 @@ class AuthRemoteSourceImpl extends BaseRemoteSource
       phoneNumber: '9849807666',
     );
     return LoginModel(accessToken: 'at', refreshToken: 'rt', userModel: user);
+  }
+
+  @override
+  Future<void> logout() async {
+    print('logout');
   }
 }

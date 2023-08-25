@@ -23,7 +23,6 @@ class LoginPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginFormCubit>(create: (_) => getIt<LoginFormCubit>()),
-        BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -37,12 +36,13 @@ class LoginPage extends StatelessWidget {
                 orElse: () {},
                 error: (message) {
                   context.showSnackbar(
-                      title: l10n.login, message: message, error: true);
-                  getIt<AppRouter>().replaceAll([const DashboardRoute()]);
+                    title: l10n.login,
+                    message: message.toString(),
+                    error: true,
+                  );
                 },
-                success: (message) {
-                  context.showSnackbar(
-                      title: l10n.login, message: 'message', error: true);
+                success: () {
+                  context.showSnackbar(title: l10n.login, message: 'success');
                   getIt<AppRouter>().replaceAll([const DashboardRoute()]);
                 },
               );

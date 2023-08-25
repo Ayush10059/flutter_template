@@ -9,6 +9,7 @@ import 'package:calendar/src/core/routes/app_router.dart';
 import 'package:calendar/src/core/themes/theme.dart';
 import 'package:calendar/src/core/widgets/widgets.dart';
 
+import '../../../features/auth/presentation/blocs/login/login_cubit.dart';
 import '../blocs/app/app_cubit.dart';
 
 class App extends StatelessWidget {
@@ -20,8 +21,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        BlocProvider<AppCubit>(
           create: (_) => getIt<AppCubit>(),
+        ),
+        BlocProvider<LoginCubit>(
+          create: (_) => getIt<LoginCubit>(),
         ),
         BlocProvider<LocaleCubit>(
           create: (_) => LocaleCubit(),

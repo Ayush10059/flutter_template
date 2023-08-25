@@ -2,4 +2,4 @@ import 'package:fpdart/fpdart.dart';
 
 import '../exceptions/xception.dart';
 
-typedef EitherXeption<T> = TaskEither<Xception, T>;
+typedef EitherXception<T> = TaskEither<Xception, T>;

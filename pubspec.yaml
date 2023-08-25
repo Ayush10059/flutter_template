@@ -82,6 +82,7 @@ dependencies:
   remixicon: ^1.0.0
 
   #google
+  google_sign_in: ^6.1.4
   googleapis: ^11.4.0
   googleapis_auth: ^1.4.1
 
@@ -93,6 +94,7 @@ dependencies:
 
   #firebase
   firebase_core: ^2.15.1
+  extension_google_sign_in_as_googleapis_auth: ^2.0.10
 
 dev_dependencies:
   flutter_test:

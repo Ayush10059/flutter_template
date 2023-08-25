@@ -1,4 +1,4 @@
-import 'package:calendar/src/core/exceptions/xception.dart';
+import 'package:calendar/src/core/typedefs/typedefs.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../network/xception_mixin.dart';
@@ -11,7 +11,7 @@ abstract class BaseRepository with XceptionMixin {
   /// [R] is response type from server that is params for [onSuccess] callback
   ///
   /// [onSuccess] callback returns the [T] and accept [R]
-  TaskEither<Xception, T> handleNetworkCall<R, T>({
+  EitherXception<T> handleNetworkCall<R, T>({
     required Future<R> call,
     required T Function(R data) onSuccess,
   }) =>

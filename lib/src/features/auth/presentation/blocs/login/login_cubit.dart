@@ -17,8 +17,17 @@ class LoginCubit extends BaseCubit<LoginState> {
   void login(LoginRequestDto loginRequestDto) {
     emit(const LoginState.loading());
     handleBusinessLogic(
-      call: _authRepository.login(loginRequestDto),
-      onSuccess: (message) => LoginState.success(message: message),
+      call: _authRepository.login(loginRequestDto).run(),
+      onSuccess: (data) => const LoginState.success(),
+      onFailure: (error) => LoginState.error(message: error),
+    );
+  }
+
+  void logout() {
+    emit(const LoginState.loading());
+    handleBusinessLogic(
+      call: _authRepository.logout().run(),
+      onSuccess: (data) => const LoginState.success(),
       onFailure: (error) => LoginState.error(message: error),
     );
   }

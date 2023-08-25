@@ -6,7 +6,7 @@ class LoginState with _$LoginState {
 
   const factory LoginState.loading() = _Loading;
 
-  const factory LoginState.error({required String message}) = _Error;
+  const factory LoginState.error({required Object message}) = _Error;
 
-  const factory LoginState.success({required String message}) = _Success;
+  const factory LoginState.success() = _Success;
 }

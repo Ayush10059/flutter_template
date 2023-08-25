@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:remixicon/remixicon.dart';
 
 import '../../../../core/di/injector.dart';
 import '../../../../core/routes/app_router.dart';
+import '../../../auth/presentation/blocs/login/login_cubit.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
@@ -21,11 +23,16 @@ class DashboardPage extends StatelessWidget {
           )
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(20.0),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            Text('data'),
+            TextButton(
+              onPressed: () {
+                context.read<LoginCubit>().logout();
+              },
+              child: const Text('Logout'),
+            ),
           ],
         ),
       ),

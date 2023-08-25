@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:calendar/firebase_options.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:logging/logging.dart';
@@ -17,6 +18,7 @@ void main() => runZonedGuarded(() {
       bootstrap(
         createEnv: () => Env.instance.createEnv(DevelopmentEnv()),
         intRootLogger: _initRootLogger,
+        firebaseOptions: DefaultFirebaseOptions.currentPlatform,
       );
     }, (Object error, StackTrace stackTrace) => print('error'));
 
