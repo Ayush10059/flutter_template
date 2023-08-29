@@ -10,8 +10,6 @@ class Event with _$Event {
     required bool allDay,
     required DateTime startTime,
     required DateTime endTime,
-    String? eventLocation,
     String? description,
-    String? coverImage,
   }) = _Event;
 }

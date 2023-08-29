@@ -14,13 +14,7 @@ part 'login_form_state.dart';
 
 @injectable
 class LoginFormCubit extends Cubit<LoginFormState> {
-  LoginFormCubit()
-      : super(
-          const LoginFormState(
-            email: const Field<String>(value: ''),
-            password: const Field<String>(value: '', obscureText: true),
-          ),
-        );
+  LoginFormCubit() : super(LoginFormState.initial());
 
   void onEmailChange(String value) {
     late Field<String> _emailField;

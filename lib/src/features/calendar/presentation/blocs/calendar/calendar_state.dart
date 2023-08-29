@@ -6,17 +6,11 @@ class CalendarState with _$CalendarState {
 
   const factory CalendarState({
     @Default(CalendarFormat.month) CalendarFormat calendarFormat,
-
-    /// Calendar plugin shows/presents calendar view for the [focusedDay] in
-    /// the given [CalendarFormat].
     required DateTime focusedDay,
     DateTime? selectedDay,
-
-    /// All events.
     @Default([]) List<Event> events,
   }) = _CalendarState;
 
-  /// Get events of a month from all events.
   List<Event> getEventsOfMonth(DateTime dateTime) => events
       .where(
         (e) =>
@@ -25,7 +19,6 @@ class CalendarState with _$CalendarState {
       )
       .toList();
 
-  /// Get events of a day from all events.
   List<Event> getEventsOfDay(DateTime dateTime) => events
       .where(
         (e) =>
@@ -34,7 +27,6 @@ class CalendarState with _$CalendarState {
       )
       .toList();
 
-  /// Get map of [DateTime] and list of [Event].
   Map<DateTime, List<Event>> getMapOfEventByDate(List<Event> events) {
     HashMap<DateTime, List<Event>> eventMap = HashMap();
     for (var event in events) {

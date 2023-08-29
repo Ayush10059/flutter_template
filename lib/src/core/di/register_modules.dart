@@ -6,6 +6,7 @@ import 'package:gql_dio_link/gql_dio_link.dart';
 import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../features/auth/data/models/user_model/user_model.dart';
 import '../logging/logger.dart';
 import '../network/auth_interceptor.dart';
 
@@ -16,7 +17,10 @@ abstract class RegisterModules {
 
   @singleton
   @preResolve
-  Future<LocalStorage> get storage async => await LocalStorage.getInstance();
+  Future<LocalStorage> get storage async =>
+      await LocalStorage.getInstance(registerAdapters: () {
+        Hive..registerAdapter(UserModelAdapter());
+      });
 
   @lazySingleton
   Dio dio(AuthInterceptor authInterceptor) => Dio(BaseOptions(

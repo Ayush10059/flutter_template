@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'firebase_options.dart';
 import 'src/app/app.dart';
 import 'src/core/di/injector.dart';
 import 'src/core/logging/logger.dart';

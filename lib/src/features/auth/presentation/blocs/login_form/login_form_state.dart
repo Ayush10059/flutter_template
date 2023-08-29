@@ -16,12 +16,6 @@ class LoginFormState with _$LoginFormState, FormMixin {
         password: Field<String>(value: '', isValid: false),
       );
 
-  @override
-  Map<String, dynamic> get values => {
-        'email': email.value.trim(),
-        'password': password.value.trim(),
-      };
-
   bool get valid => isValid;
 
   @override

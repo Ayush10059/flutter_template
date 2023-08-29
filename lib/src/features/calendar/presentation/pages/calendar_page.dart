@@ -8,6 +8,7 @@ import 'package:remixicon/remixicon.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../core/di/injector.dart';
+import '../../../../core/routes/app_router.dart';
 import '../../domain/models/event.dart';
 import '../../utils/utils.dart';
 import '../blocs/calendar/calendar_cubit.dart';
@@ -37,9 +38,11 @@ class _CalendarPageState extends State<CalendarPage> {
         appBar: AppBar(
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                getIt<AppRouter>().push(CreateEventRoute());
+              },
               icon: const Icon(
-                Remix.notification_2_line,
+                Remix.add_box_line,
               ),
             ),
           ],
@@ -193,9 +196,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 16.r,
-                ),
+                16.verticalSpace,
                 Expanded(
                   key: ObjectKey(state.events),
                   child: ListView.builder(
@@ -211,22 +212,22 @@ class _CalendarPageState extends State<CalendarPage> {
                         eventDay: eventDay,
                         events: events,
                         onEventSelected: (event) {
-                          // context.navigateTo(
-                          //   EventDetailRoute(
-                          //     eventId: event.id,
-                          //     onDelete: () {
-                          //       context
-                          //           .read<CalendarCubit>()
-                          //           .deleteEvent(event);
-                          //       context.router.navigate(const CalendarRoute());
-                          //     },
-                          //   ),
-                          // );
+                          context.navigateTo(
+                            EventDetailRoute(
+                              eventId: event.id,
+                              onDelete: () {
+                                context
+                                    .read<CalendarCubit>()
+                                    .deleteEvent(event);
+                                context.router.navigate(const CalendarRoute());
+                              },
+                            ),
+                          );
                         },
                       );
                     },
                   ),
-                )
+                ),
               ],
             );
           },

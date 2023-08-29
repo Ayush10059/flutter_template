@@ -31,7 +31,5 @@ class AuthRemoteSourceImpl extends BaseRemoteSource
   }
 
   @override
-  Future<void> logout() async {
-    print('logout');
-  }
+  Future<void> logout() async {}
 }

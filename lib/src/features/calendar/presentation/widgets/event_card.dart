@@ -76,9 +76,7 @@ class EventCard extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    SizedBox(
-                      height: 4.r,
-                    ),
+                    4.verticalSpace,
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -87,9 +85,7 @@ class EventCard extends StatelessWidget {
                           color: Colors.white,
                           size: 16,
                         ),
-                        SizedBox(
-                          width: 2.r,
-                        ),
+                        2.horizontalSpace,
                         Expanded(
                           child: Text(
                             event.eventLocation ?? 'n/a',
@@ -101,9 +97,7 @@ class EventCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 4.r,
-                    ),
+                    4.verticalSpace,
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -112,9 +106,7 @@ class EventCard extends StatelessWidget {
                           color: Colors.white,
                           size: 16,
                         ),
-                        SizedBox(
-                          width: 2.r,
-                        ),
+                        2.horizontalSpace,
                         Expanded(
                           child: Text(
                             '${DateFormat().format(event.startTime)}-${DateFormat().format(event.endTime)}',

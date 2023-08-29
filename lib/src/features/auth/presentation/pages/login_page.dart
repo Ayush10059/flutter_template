@@ -2,15 +2,15 @@ import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:calendar/localization/l10n.dart';
-import 'package:calendar/src/core/di/injector.dart';
-import 'package:calendar/src/core/extensions/extensions.dart';
-import 'package:calendar/src/core/form/field.dart';
-import 'package:calendar/src/core/routes/app_router.dart';
-import 'package:calendar/src/core/themes/theme.dart';
-import 'package:calendar/src/core/widgets/widgets.dart';
 import 'package:remixicon/remixicon.dart';
 
+import '../../../../../localization/l10n.dart';
+import '../../../../core/di/injector.dart';
+import '../../../../core/extensions/extensions.dart';
+import '../../../../core/form/field.dart';
+import '../../../../core/routes/app_router.dart';
+import '../../../../core/themes/theme.dart';
+import '../../../../core/widgets/widgets.dart';
 import '../blocs/login/login_cubit.dart';
 import '../blocs/login_form/login_form_cubit.dart';
 
@@ -66,9 +66,12 @@ class LoginPage extends StatelessWidget {
                 30.verticalSpace,
                 BlocBuilder<LoginFormCubit, LoginFormState>(
                   builder: (context, state) {
-                    final loading = context.select<LoginCubit, bool>((value) =>
-                        value.state.maybeWhen(
-                            orElse: () => false, loading: () => true));
+                    final loading = context.select<LoginCubit, bool>(
+                      (value) => value.state.maybeWhen(
+                        orElse: () => false,
+                        loading: () => true,
+                      ),
+                    );
                     return CustomButton(
                       onPressed: () {
                         context
