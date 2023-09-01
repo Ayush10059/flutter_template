@@ -2,7 +2,7 @@ import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../domain/models/event.dart';
+import '../../domain/models/event_model.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({
@@ -11,8 +11,8 @@ class EventCard extends StatelessWidget {
     this.onEventSelected,
   });
 
-  final Event event;
-  final Function(Event event)? onEventSelected;
+  final EventModel event;
+  final Function(EventModel event)? onEventSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -75,27 +75,6 @@ class EventCard extends StatelessWidget {
                         ),
                         textAlign: TextAlign.start,
                       ),
-                    ),
-                    4.verticalSpace,
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                        2.horizontalSpace,
-                        Expanded(
-                          child: Text(
-                            event.eventLocation ?? 'n/a',
-                            style: const TextStyle(
-                              color: Colors.white,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                        ),
-                      ],
                     ),
                     4.verticalSpace,
                     Row(

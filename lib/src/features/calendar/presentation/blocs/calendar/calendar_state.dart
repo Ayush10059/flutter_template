@@ -8,10 +8,10 @@ class CalendarState with _$CalendarState {
     @Default(CalendarFormat.month) CalendarFormat calendarFormat,
     required DateTime focusedDay,
     DateTime? selectedDay,
-    @Default([]) List<Event> events,
+    @Default([]) List<EventModel> events,
   }) = _CalendarState;
 
-  List<Event> getEventsOfMonth(DateTime dateTime) => events
+  List<EventModel> getEventsOfMonth(DateTime dateTime) => events
       .where(
         (e) =>
             DateFormat('yyyy-MM').format(e.startTime) ==
@@ -19,7 +19,7 @@ class CalendarState with _$CalendarState {
       )
       .toList();
 
-  List<Event> getEventsOfDay(DateTime dateTime) => events
+  List<EventModel> getEventsOfDay(DateTime dateTime) => events
       .where(
         (e) =>
             DateFormat('yyyy-MM-dd').format(e.startTime) ==
@@ -27,8 +27,8 @@ class CalendarState with _$CalendarState {
       )
       .toList();
 
-  Map<DateTime, List<Event>> getMapOfEventByDate(List<Event> events) {
-    HashMap<DateTime, List<Event>> eventMap = HashMap();
+  Map<DateTime, List<EventModel>> getMapOfEventByDate(List<EventModel> events) {
+    HashMap<DateTime, List<EventModel>> eventMap = HashMap();
     for (var event in events) {
       if (eventMap.containsKey(event.startTime)) {
         eventMap[event.startTime]!.add(event);
@@ -41,7 +41,7 @@ class CalendarState with _$CalendarState {
     );
   }
 
-  Map<DateTime, List<Event>> getEventMap() => getMapOfEventByDate(
+  Map<DateTime, List<EventModel>> getEventMap() => getMapOfEventByDate(
         selectedDay != null
             ? getEventsOfDay(selectedDay!)
             : getEventsOfMonth(focusedDay),

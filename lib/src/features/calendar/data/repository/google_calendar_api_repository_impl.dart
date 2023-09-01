@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/xception_mixin.dart';
 import '../../../../core/typedefs/typedefs.dart';
-import '../../domain/models/event.dart' as app;
+import '../../domain/models/event_model.dart';
 import '../../domain/repository/google_calendar_api_repository.dart';
 
 @Injectable(as: GoogleCalendarApiRepository)
@@ -21,32 +21,24 @@ class GoogleCalendarApiRepositoryImpl
   @override
   EitherXception<void> addEvent({
     required String calendarId,
-    required app.Event event,
+    required EventModel event,
   }) =>
       tryCatch(() {
         final Event gEvent;
-        if (event.allDay) {
-          gEvent = Event(
-            start: EventDateTime(date: event.startTime),
-            end: EventDateTime(date: event.endTime),
-            summary: event.title,
-            description: event.description,
-          );
-        } else {
-          gEvent = Event(
-            start: EventDateTime(dateTime: event.startTime),
-            end: EventDateTime(dateTime: event.endTime),
-            summary: event.title,
-            description: event.description,
-          );
-        }
+        gEvent = Event(
+          start: EventDateTime(date: event.startTime),
+          end: EventDateTime(date: event.endTime),
+          summary: event.title,
+          description: event.description,
+        );
+
         return _calendarApi.events.insert(gEvent, calendarId);
       });
 
   @override
   EitherXception<Unit> addEvents({
     required String calendarId,
-    required List<app.Event> events,
+    required List<EventModel> events,
   }) =>
       tryCatch(() async {
         for (var event in events) {
@@ -54,6 +46,7 @@ class GoogleCalendarApiRepositoryImpl
         }
         return unit;
       });
+
   @override
   EitherXception<String> createCalendarWithAppName() => tryCatch(() async {
         return _calendarApi.calendars

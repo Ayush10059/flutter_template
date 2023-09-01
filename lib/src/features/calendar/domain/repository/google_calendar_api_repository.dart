@@ -1,20 +1,25 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:googleapis/calendar/v3.dart' as g_api;
+import 'package:googleapis/calendar/v3.dart';
 
 import '../../../../core/typedefs/typedefs.dart';
-import '../models/event.dart';
+import '../models/event_model.dart';
 
 abstract class GoogleCalendarApiRepository {
-  EitherXception<List<g_api.CalendarListEntry>> getCalendars();
+  EitherXception<List<CalendarListEntry>> getCalendars();
+
   EitherXception<String> createCalendarWithAppName();
+
   EitherXception<void> addEvent({
     required String calendarId,
-    required Event event,
+    required EventModel event,
   });
+
   EitherXception<Unit> addEvents({
     required String calendarId,
-    required List<Event> events,
+    required List<EventModel> events,
   });
+
   EitherXception<void> getEvents(String calendarId);
+
   EitherXception<void> signIn();
 }

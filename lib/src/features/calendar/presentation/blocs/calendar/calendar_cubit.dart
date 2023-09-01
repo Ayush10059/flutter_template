@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../domain/models/event.dart';
+import '../../../domain/models/event_model.dart';
 import '../../../domain/repository/calendar_repository.dart';
 
 part 'calendar_cubit.freezed.dart';
@@ -22,8 +22,8 @@ class CalendarCubit extends Cubit<CalendarState> {
 
   final CalendarRepository _repository;
 
-  void _init() {
-    emit(state.copyWith(events: [..._repository.getEvents()]));
+  void _init() async {
+    emit(state.copyWith(events: [...await _repository.getEvents()]));
     _repository.events().listen((events) {
       // emit(state.copyWith(events: events)); does not rebuild bloc builder.
       emit(state.copyWith(events: [...events]));
@@ -50,5 +50,5 @@ class CalendarCubit extends Cubit<CalendarState> {
     }
   }
 
-  void deleteEvent(Event event) => _repository.deleteEvent(event.id);
+  void deleteEvent(EventModel event) => _repository.deleteEvent(event.id);
 }

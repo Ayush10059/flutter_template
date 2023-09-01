@@ -109,30 +109,6 @@ class EventDetailPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.location_on,
-                                color: Theme.of(context).colorScheme.primary,
-                                size: 20,
-                              ),
-                              16.horizontalSpace,
-                              Expanded(
-                                child: Text(
-                                  data.eventLocation ?? 'n/a',
-                                  style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onBackground,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          10.verticalSpace,
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
                                 Icons.schedule,
                                 size: 20,
                                 color: Theme.of(context).colorScheme.primary,

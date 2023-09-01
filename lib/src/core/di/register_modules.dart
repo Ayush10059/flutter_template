@@ -7,6 +7,7 @@ import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../features/auth/data/models/user_model/user_model.dart';
+import '../../features/calendar/domain/models/event_model.dart';
 import '../logging/logger.dart';
 import '../network/auth_interceptor.dart';
 
@@ -20,6 +21,7 @@ abstract class RegisterModules {
   Future<LocalStorage> get storage async =>
       await LocalStorage.getInstance(registerAdapters: () {
         Hive..registerAdapter(UserModelAdapter());
+        Hive..registerAdapter(EventModelAdapter());
       });
 
   @lazySingleton

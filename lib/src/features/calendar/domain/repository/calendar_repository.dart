@@ -1,9 +1,13 @@
-import '../models/event.dart';
+import '../models/event_model.dart';
 
 abstract class CalendarRepository {
-  Stream<List<Event>> events();
-  List<Event> getEvents();
-  void addEvent(Event event);
-  void updateEvent(Event event);
+  Stream<List<EventModel>> events();
+
+  List<EventModel> getEvents();
+
+  void addEvent(EventModel event);
+
+  void updateEvent(EventModel event);
+
   void deleteEvent(String id);
 }

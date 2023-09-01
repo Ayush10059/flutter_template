@@ -9,7 +9,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../core/di/injector.dart';
 import '../../../../core/routes/app_router.dart';
-import '../../domain/models/event.dart';
+import '../../domain/models/event_model.dart';
 import '../../utils/utils.dart';
 import '../blocs/calendar/calendar_cubit.dart';
 import '../widgets/calendar_header.dart';
@@ -81,7 +81,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   },
                   calendarFormat: state.calendarFormat,
                 ),
-                TableCalendar<Event>(
+                TableCalendar<EventModel>(
                   headerVisible: false,
                   firstDay: DateTime.utc(1, 1, 1),
                   lastDay: DateTime.utc(10000, 12, 31),
@@ -204,7 +204,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     itemBuilder: (context, index) {
                       DateTime eventDay =
                           state.getEventMap().keys.elementAt(index);
-                      List<Event> events =
+                      List<EventModel> events =
                           state.getEventMap().values.elementAt(index);
                       String formattedDay = DateFormat.E().format(eventDay);
                       return DayEventsWidget(

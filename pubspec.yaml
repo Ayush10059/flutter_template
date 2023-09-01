@@ -59,6 +59,9 @@ dependencies:
   #logger
   logger: ^2.0.1
 
+  #path_provider
+  path_provider: ^2.0.13
+
   # google fonts
   google_fonts: ^5.1.0
 

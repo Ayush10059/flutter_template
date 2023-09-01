@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/event.dart';
+import '../../domain/models/event_model.dart';
 import 'event_card.dart';
 
 class DayEventsWidget extends StatelessWidget {
@@ -14,8 +14,8 @@ class DayEventsWidget extends StatelessWidget {
 
   final String formattedDay;
   final DateTime eventDay;
-  final List<Event> events;
-  final Function(Event event)? onEventSelected;
+  final List<EventModel> events;
+  final Function(EventModel event)? onEventSelected;
 
   @override
   Widget build(BuildContext context) {

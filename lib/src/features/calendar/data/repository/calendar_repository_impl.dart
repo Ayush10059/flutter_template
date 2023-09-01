@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:calendar/src/features/calendar/domain/models/event.dart';
+import 'package:calendar/src/features/calendar/domain/models/event_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -8,18 +8,18 @@ import '../../domain/repository/calendar_repository.dart';
 
 @LazySingleton(as: CalendarRepository)
 class CalendarRepositoryImpl implements CalendarRepository {
-  final List<Event> _events = [];
+  final List<EventModel> _events = [];
 
-  final _streamController = StreamController<List<Event>>.broadcast();
+  final _streamController = StreamController<List<EventModel>>.broadcast();
 
   @override
-  void addEvent(Event event) {
+  void addEvent(EventModel event) {
     _events.add(event);
     _streamController.add(_events);
   }
 
   @override
-  void updateEvent(Event event) {
+  void updateEvent(EventModel event) {
     final index = _events.indexWhere(
       (e) => e.id == event.id,
     );
@@ -34,12 +34,12 @@ class CalendarRepositoryImpl implements CalendarRepository {
   }
 
   @override
-  Stream<List<Event>> events() {
+  Stream<List<EventModel>> events() {
     return _streamController.stream.startWith(_events);
   }
 
   @override
-  List<Event> getEvents() {
+  List<EventModel> getEvents() {
     return _events;
   }
 }

@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/async/async_value.dart';
-import '../../../domain/models/event.dart';
+import '../../../domain/models/event_model.dart';
 import '../../../domain/repository/calendar_repository.dart';
 
 part 'event_details_bloc.freezed.dart';
 
-typedef EventDetailsState = AsyncValue<Event>;
+typedef EventDetailsState = AsyncValue<EventModel>;
 
 class EventDetailsBloc extends Bloc<EventDetailsEvent, EventDetailsState> {
   EventDetailsBloc({

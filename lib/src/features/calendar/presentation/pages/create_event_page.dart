@@ -12,9 +12,8 @@ import '../../../../core/form/field.dart';
 import '../../../../core/form/form_status.dart';
 import '../../../../core/routes/app_router.dart';
 import '../../../../core/themes/app_styles.dart';
-import '../../../../core/widgets/labeled_widget.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../domain/models/event.dart';
+import '../../domain/models/event_model.dart';
 import '../../domain/repository/calendar_repository.dart';
 import '../blocs/create_event/create_event_cubit.dart';
 import '../widgets/date_time_form_field.dart';
@@ -26,7 +25,7 @@ class CreateEventPage extends HookWidget {
     super.key,
     this.event,
   });
-  final Event? event;
+  final EventModel? event;
 
   @override
   Widget build(BuildContext context) {

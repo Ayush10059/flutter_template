@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 import '../../../../../core/form/field.dart';
 import '../../../../../core/form/form_mixin.dart';
 import '../../../../../core/form/form_status.dart';
-import '../../../domain/models/event.dart';
+import '../../../domain/models/event_model.dart';
 import '../../../domain/models/repeat_type.dart';
 import '../../../domain/repository/calendar_repository.dart';
 
@@ -14,7 +14,7 @@ part 'create_event_cubit.freezed.dart';
 part 'create_event_state.dart';
 
 class CreateEventCubit extends Cubit<CreateEventState> {
-  CreateEventCubit(this.calendarRepository, Event? event)
+  CreateEventCubit(this.calendarRepository, EventModel? event)
       : super(CreateEventState.initial()) {}
 
   final CalendarRepository calendarRepository;
@@ -93,7 +93,7 @@ class CreateEventCubit extends Cubit<CreateEventState> {
   void onSubmit() async {
     emit(state.copyWith(status: const FormStatus.submitting()));
 
-    final event = Event(
+    final event = EventModel(
       id: const Uuid().v4(),
       title: state.title.value,
       allDay: state.allDay,
