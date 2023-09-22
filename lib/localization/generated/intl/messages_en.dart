@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No Internet Connection"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Enter Password"),
-        "repeat": MessageLookupByLibrary.simpleMessage("repeat"),
+        "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "serverError": MessageLookupByLibrary.simpleMessage("Server Error"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),

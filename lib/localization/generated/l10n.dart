@@ -370,10 +370,10 @@ class AppLocalizations {
     );
   }
 
-  /// `repeat`
+  /// `Repeat`
   String get repeat {
     return Intl.message(
-      'repeat',
+      'Repeat',
       name: 'repeat',
       desc: '',
       args: [],

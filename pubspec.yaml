@@ -94,6 +94,9 @@ dependencies:
   googleapis: ^11.4.0
   googleapis_auth: ^1.4.1
 
+  #flutter slidable
+  flutter_slidable: ^3.0.0
+
   #eb
   eb_core_flutter:
     git:
