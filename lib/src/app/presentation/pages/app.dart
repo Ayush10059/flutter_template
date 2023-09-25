@@ -10,6 +10,7 @@ import 'package:calendar/src/core/themes/theme.dart';
 import 'package:calendar/src/core/widgets/widgets.dart';
 
 import '../../../features/auth/presentation/blocs/login/login_cubit.dart';
+import '../../../features/calendar/presentation/blocs/calendar/calendar_cubit.dart';
 import '../blocs/app/app_cubit.dart';
 
 class App extends StatelessWidget {
@@ -29,6 +30,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<LocaleCubit>(
           create: (_) => LocaleCubit(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<CalendarCubit>(),
         ),
       ],
       child: BlocListener<AppCubit, AppState>(

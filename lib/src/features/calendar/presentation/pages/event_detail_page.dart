@@ -8,6 +8,7 @@ import '../../../../../localization/l10n.dart';
 import '../../../../core/async/async_value.dart';
 import '../../../../core/di/injector.dart';
 import '../../../../core/routes/app_router.dart';
+import '../../../../core/themes/app_styles.dart';
 import '../blocs/event_details/event_details_bloc.dart';
 
 @RoutePage()
@@ -89,18 +90,14 @@ class EventDetailPage extends StatelessWidget {
                         children: [
                           Text(
                             data.title.trim(),
-                            style: TextStyle(
+                            style: AppStyles.text36PxBold.copyWith(
                               color: Theme.of(context).colorScheme.onBackground,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           10.verticalSpace,
-                          const Text(
+                          Text(
                             'by EB Pearls',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
+                            style: AppStyles.text14Px.copyWith(
                               color: Color(0xFF9E9E9E),
                             ),
                           ),
@@ -114,20 +111,6 @@ class EventDetailPage extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               10.horizontalSpace,
-                              Expanded(
-                                child: Text(
-                                  data.allDay
-                                      ? l10n.allDay
-                                      : '${DateFormat().format(data.startTime)} - ${DateFormat().format(data.endTime)}',
-                                  style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onBackground,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                           10.verticalSpace,
@@ -143,12 +126,10 @@ class EventDetailPage extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   DateFormat().format(data.startTime),
-                                  style: TextStyle(
+                                  style: AppStyles.text14Px.copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
                                         .onBackground,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
                                   ),
                                 ),
                               ),
@@ -158,11 +139,9 @@ class EventDetailPage extends StatelessWidget {
                           if (data.description != null)
                             Text(
                               data.description!,
-                              style: TextStyle(
+                              style: AppStyles.text14Px.copyWith(
                                 color:
                                     Theme.of(context).colorScheme.onBackground,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
                               ),
                             ),
                         ],

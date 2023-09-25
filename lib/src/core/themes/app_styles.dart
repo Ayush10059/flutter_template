@@ -35,6 +35,38 @@ abstract class AppStyles {
     fontStyle: FontStyle.normal,
   );
 
+  // text 10px
+  //regular
+  static TextStyle text10Px = GoogleFonts.roboto(
+    fontSize: 10.sp,
+    height: calculateHeight(12, 10),
+    fontStyle: FontStyle.normal,
+  );
+
+  //medium
+  static TextStyle text10PxMedium = GoogleFonts.roboto(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(12, 10),
+    fontStyle: FontStyle.normal,
+  );
+
+  //SemiBold
+  static TextStyle text10PxSemiBold = GoogleFonts.roboto(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(12, 10),
+    fontStyle: FontStyle.normal,
+  );
+
+  //bold
+  static TextStyle text10PxBold = GoogleFonts.roboto(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.bold,
+    height: calculateHeight(12, 10),
+    fontStyle: FontStyle.normal,
+  );
+
   // text 12px
 
   //regular
@@ -257,6 +289,38 @@ abstract class AppStyles {
     fontSize: 24.sp,
     fontWeight: FontWeight.bold,
     height: calculateHeight(28, 24),
+    fontStyle: FontStyle.normal,
+  );
+
+  // text 28px
+  //regular
+  static TextStyle text28Px = GoogleFonts.roboto(
+    fontSize: 28.sp,
+    height: calculateHeight(32, 28),
+    fontStyle: FontStyle.normal,
+  );
+
+  //medium
+  static TextStyle text28PxMedium = GoogleFonts.roboto(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(32, 28),
+    fontStyle: FontStyle.normal,
+  );
+
+  //SemiBold
+  static TextStyle text28PxSemiBold = GoogleFonts.roboto(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(32, 28),
+    fontStyle: FontStyle.normal,
+  );
+
+  //bold
+  static TextStyle text28PxBold = GoogleFonts.roboto(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.bold,
+    height: calculateHeight(32, 28),
     fontStyle: FontStyle.normal,
   );
 

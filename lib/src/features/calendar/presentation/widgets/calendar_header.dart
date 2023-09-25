@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../../../core/themes/app_styles.dart';
+
 class CalendarHeader extends StatelessWidget {
   const CalendarHeader({
     super.key,
@@ -44,9 +46,7 @@ class CalendarHeader extends StatelessWidget {
             },
             child: Text(
               headerText,
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
+              style: AppStyles.text14PxBold.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
               ),
             ),

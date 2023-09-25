@@ -11,8 +11,10 @@ class CreateEventState with _$CreateEventState, FormMixin {
     DateTime? endTime,
     @Default(const Field<String>(value: '', isValid: false))
     Field<String> description,
-    @Default(RepeatType.noRepeat) RepeatType repeatType,
-    @Default(true) bool allDay,
+    @Default(const Field<String>(value: '', isValid: false))
+    Field<String> notify,
+    @Default(const Field<String>(value: '', isValid: false))
+    Field<String> addGuest,
   }) = _CreateEventState;
 
   factory CreateEventState.initial() => CreateEventState(
@@ -21,8 +23,9 @@ class CreateEventState with _$CreateEventState, FormMixin {
         endTime: DateTime.now(),
         status: const FormStatus.initial(),
       );
+
   bool get valid => isValid;
 
   @override
-  List<Field> get fields => [title, description];
+  List<Field> get fields => [title, description, notify, addGuest];
 }

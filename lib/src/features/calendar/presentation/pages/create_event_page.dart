@@ -14,10 +14,10 @@ import '../../../../core/routes/app_router.dart';
 import '../../../../core/themes/app_styles.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../domain/models/event_model.dart';
+import '../../domain/models/notify_type.dart';
 import '../../domain/repository/calendar_repository.dart';
 import '../blocs/create_event/create_event_cubit.dart';
 import '../widgets/date_time_form_field.dart';
-import '../widgets/event_repeat_form_widget.dart';
 
 @RoutePage()
 class CreateEventPage extends HookWidget {
@@ -43,105 +43,81 @@ class CreateEventPage extends HookWidget {
               },
               builder: (context, state) {
                 return SingleChildScrollView(
-                  padding: EdgeInsets.all(10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const _TitleField(),
-                      16.verticalSpace,
-                      SwitchListTile.adaptive(
-                        title: Text(l10n.allDay),
-                        value: state.allDay,
-                        onChanged: (value) {
-                          context
-                              .read<CreateEventCubit>()
-                              .onAllDayCheckChanged(value);
-                        },
+                      Text(
+                        'Book manual event',
+                        style: AppStyles.text24PxSemiBold.primary,
                       ),
-                      16.verticalSpace,
-                      LabeledWidget(
-                        labelText: l10n.startDate,
-                        child: state.allDay
-                            ? DateTimeFormField(
-                                key: const ValueKey(DatePickerType.date),
-                                type: DatePickerType.date,
-                                initialValue: state.startTime,
-                                validator: (v) => RequiredValidator(
-                                  errorText: l10n.validationRequired,
-                                ).call(v?.toString() ?? ''),
-                                onChanged: (value) => context
-                                    .read<CreateEventCubit>()
-                                    .onStartDateChanged(value),
-                              )
-                            : DateTimeFormField(
-                                key: const ValueKey(DatePickerType.dateTime),
-                                type: DatePickerType.dateTime,
-                                initialValue: state.startTime,
-                                validator: (v) => RequiredValidator(
-                                  errorText: l10n.validationRequired,
-                                ).call(v?.toString() ?? ''),
-                                onChanged: (value) => context
-                                    .read<CreateEventCubit>()
-                                    .onStartDateChanged(value),
+                      12.verticalSpace,
+                      Card(
+                        elevation: 8,
+                        child: Padding(
+                          padding: EdgeInsets.all(12.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const _TitleField(),
+                              8.verticalSpace,
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: DateTimeFormField(
+                                      key: const ValueKey('start time'),
+                                      initialValue: state.startTime,
+                                      validator: (v) => RequiredValidator(
+                                        errorText: l10n.validationRequired,
+                                      ).call(v?.toString() ?? ''),
+                                      onChanged: (value) => context
+                                          .read<CreateEventCubit>()
+                                          .onStartDateChanged(value),
+                                    ),
+                                  ),
+                                  8.horizontalSpace,
+                                  Expanded(
+                                    child: DateTimeFormField(
+                                      key: const ValueKey('end time'),
+                                      initialValue: state.startTime,
+                                      validator: (v) => RequiredValidator(
+                                        errorText: l10n.validationRequired,
+                                      ).call(v?.toString() ?? ''),
+                                      onChanged: (value) => context
+                                          .read<CreateEventCubit>()
+                                          .onStartDateChanged(value),
+                                    ),
+                                  ),
+                                ],
                               ),
-                      ),
-                      16.verticalSpace,
-                      LabeledWidget(
-                        labelText: l10n.endDate,
-                        child: state.allDay
-                            ? DateTimeFormField(
-                                key: const ValueKey(DatePickerType.date),
-                                type: DatePickerType.date,
-                                initialValue: state.endTime,
-                                firstDate: state.startTime,
-                                validator: (v) => RequiredValidator(
-                                  errorText: l10n.validationRequired,
-                                ).call(v?.toString() ?? ''),
-                                onChanged: (value) => context
-                                    .read<CreateEventCubit>()
-                                    .onEndDateChanged(value),
-                              )
-                            : DateTimeFormField(
-                                key: const ValueKey(DatePickerType.dateTime),
-                                type: DatePickerType.dateTime,
-                                initialValue: state.endTime,
-                                firstDate: state.startTime,
-                                validator: (v) => RequiredValidator(
-                                  errorText: l10n.validationRequired,
-                                ).call(v?.toString() ?? ''),
-                                onChanged: (value) => context
-                                    .read<CreateEventCubit>()
-                                    .onEndDateChanged(value),
+                              8.verticalSpace,
+                              const _DescriptionField(),
+                              8.verticalSpace,
+                              Text(
+                                'Notify',
+                                style: AppStyles.text12Px,
                               ),
-                      ),
-                      16.verticalSpace,
-                      const _DescriptionField(),
-                      16.verticalSpace,
-                      ListTile(
-                        title: Text(l10n.doesNotRepeat),
-                        leading: const Icon(Icons.repeat),
-                        onTap: () {
-                          final bloc =
-                              BlocProvider.of<CreateEventCubit>(context);
-                          context.showCustomDialog(
-                            content: BlocProvider<CreateEventCubit>.value(
-                              value: bloc,
-                              child: const EventRepeatFormWidget(),
-                            ),
-                            title: l10n.repeat,
-                            actionTitle: l10n.save,
-                            barrierDismissle: true,
-                          );
-                        },
-                      ),
-                      16.verticalSpace,
-                      CustomButton(
-                        onPressed: () {
-                          context.read<CreateEventCubit>().onSubmit();
-                        },
-                        isDisabled: !state.isValid,
-                        label: l10n.save,
-                        fullWidth: true,
+                              4.verticalSpace,
+                              const _NotifyField(),
+                              8.verticalSpace,
+                              Text(
+                                'Add Guest',
+                                style: AppStyles.text12Px,
+                              ),
+                              4.verticalSpace,
+                              const _AddGuestField(),
+                              8.verticalSpace,
+                              CustomButton(
+                                label: l10n.save,
+                                onPressed: () {
+                                  context.read<CreateEventCubit>().onSubmit();
+                                },
+                                isDisabled: !state.isValid,
+                                fullWidth: true,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -186,12 +162,62 @@ class _DescriptionField extends StatelessWidget {
       selector: (state) => state.description,
       builder: (context, state) {
         return TextFormField(
+          minLines: 5,
+          maxLines: 5,
           style: AppStyles.text14PxMedium.primary,
           textInputAction: TextInputAction.next,
           onChanged: context.read<CreateEventCubit>().onDescriptionChanged,
           decoration: InputDecoration(
             errorText: state.hasError ? state.errorMessage : null,
             hintText: 'Description',
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _NotifyField extends StatelessWidget {
+  const _NotifyField();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<CreateEventCubit, CreateEventState, Field<String>>(
+      selector: (state) => state.notify,
+      builder: (context, state) {
+        context.read<CreateEventCubit>().onNotifyChanged(notifyList.first);
+        return DropdownButtonFormField(
+          value: notifyList.first,
+          items: notifyList.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (value) => context
+              .read<CreateEventCubit>()
+              .onNotifyChanged(value ?? notifyList.first),
+        );
+      },
+    );
+  }
+}
+
+class _AddGuestField extends StatelessWidget {
+  const _AddGuestField();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<CreateEventCubit, CreateEventState, Field<String>>(
+      selector: (state) => state.addGuest,
+      builder: (context, state) {
+        return TextFormField(
+          style: AppStyles.text14PxMedium.primary,
+          textInputAction: TextInputAction.next,
+          onChanged: context.read<CreateEventCubit>().onAddGuestChanged,
+          decoration: InputDecoration(
+            errorText: state.hasError ? state.errorMessage : null,
+            hintText: 'Add Guest',
           ),
         );
       },

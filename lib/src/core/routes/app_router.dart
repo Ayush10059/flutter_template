@@ -9,7 +9,16 @@ class AppRouter extends $AppRouter {
   @override
   final List<AutoRoute> routes = [
     AutoRoute(page: LoginRoute.page),
-    AutoRoute(page: DashboardRoute.page),
+    AutoRoute(
+      page: DashboardRoute.page,
+      children: [
+        AutoRoute(
+          page: HomeRoute.page,
+        ),
+        AutoRoute(page: MyEventsRoute.page),
+        RedirectRoute(path: '*', redirectTo: ''),
+      ],
+    ),
     AutoRoute(page: CalendarRoute.page),
     AutoRoute(page: CreateEventRoute.page),
     AutoRoute(page: EventDetailRoute.page),

@@ -13,10 +13,11 @@ class EventModel extends HiveObject with _$EventModel {
   factory EventModel({
     @HiveField(0) required String id,
     @HiveField(1) required String title,
-    @HiveField(2) required bool allDay,
-    @HiveField(3) required DateTime startTime,
-    @HiveField(4) required DateTime endTime,
-    @HiveField(5) @Default('-') String? description,
+    @HiveField(2) required DateTime startTime,
+    @HiveField(3) required DateTime endTime,
+    @HiveField(4) @Default('-') String? description,
+    @HiveField(5) @Default('-') String? notify,
+    @HiveField(6) @Default('-') String? addGuest,
   }) = _EventModel;
 
   factory EventModel.fromJson(Map<String, dynamic> json) =>

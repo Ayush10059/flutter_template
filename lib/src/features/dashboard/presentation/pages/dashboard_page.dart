@@ -8,8 +8,8 @@ import '../../../../core/routes/app_router.dart';
 import '../../../auth/presentation/blocs/login/login_cubit.dart';
 
 @RoutePage()
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,48 @@ class DashboardPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+@RoutePage()
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AutoTabsRouter.pageView(
+      routes: const [
+        HomeRoute(),
+        MyEventsRoute(),
+      ],
+      builder: (context, child, _) {
+        final tabsRouter = AutoTabsRouter.of(context);
+        return Scaffold(
+          extendBody: true,
+          body: child,
+          bottomNavigationBar: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
+            ),
+            child: NavigationBar(
+              selectedIndex: tabsRouter.activeIndex,
+              onDestinationSelected: tabsRouter.setActiveIndex,
+              destinations: [
+                const NavigationDestination(
+                  label: 'Home',
+                  icon: Icon(Icons.home),
+                ),
+                const NavigationDestination(
+                  label: 'Top',
+                  icon: Icon(Icons.star),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

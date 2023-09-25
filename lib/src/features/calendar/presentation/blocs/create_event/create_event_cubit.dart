@@ -6,7 +6,6 @@ import '../../../../../core/form/field.dart';
 import '../../../../../core/form/form_mixin.dart';
 import '../../../../../core/form/form_status.dart';
 import '../../../domain/models/event_model.dart';
-import '../../../domain/models/repeat_type.dart';
 import '../../../domain/repository/calendar_repository.dart';
 
 part 'create_event_cubit.freezed.dart';
@@ -36,31 +35,6 @@ class CreateEventCubit extends Cubit<CreateEventState> {
     emit(state.copyWith(title: _titleField));
   }
 
-  DateTime _withCurrentTime(DateTime dateTime) {
-    final now = DateTime.now();
-    return DateTime(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day,
-      now.hour,
-      now.minute,
-      now.second,
-    );
-  }
-
-  void onAllDayCheckChanged(bool value) {
-    final s = state.startTime;
-    final e = state.endTime;
-
-    emit(
-      state.copyWith(
-        allDay: value,
-        startTime: s != null ? _withCurrentTime(s) : null,
-        endTime: e != null ? _withCurrentTime(e) : null,
-      ),
-    );
-  }
-
   void onStartDateChanged(DateTime? value) {
     emit(state.copyWith(startTime: value));
   }
@@ -86,8 +60,26 @@ class CreateEventCubit extends Cubit<CreateEventState> {
     emit(state.copyWith(description: _descriptionField));
   }
 
-  void onRepeatTypeChanged(RepeatType repeatType) {
-    emit(state.copyWith(repeatType: repeatType));
+  void onNotifyChanged(String value) {
+    late Field<String> _notifyField;
+    _notifyField = state.notify.copyWith(
+      value: value,
+      errorMessage: '',
+      isValid: true,
+    );
+
+    emit(state.copyWith(notify: _notifyField));
+  }
+
+  void onAddGuestChanged(String value) {
+    late Field<String> _addGuestField;
+    _addGuestField = state.addGuest.copyWith(
+      value: value,
+      errorMessage: '',
+      isValid: true,
+    );
+
+    emit(state.copyWith(addGuest: _addGuestField));
   }
 
   void onSubmit() async {
@@ -96,10 +88,11 @@ class CreateEventCubit extends Cubit<CreateEventState> {
     final event = EventModel(
       id: const Uuid().v4(),
       title: state.title.value,
-      allDay: state.allDay,
       startTime: state.startTime!,
       endTime: state.endTime!,
       description: state.description.value,
+      notify: state.notify.value,
+      addGuest: state.addGuest.value,
     );
 
     calendarRepository.addEvent(event);
