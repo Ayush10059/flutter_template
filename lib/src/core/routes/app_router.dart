@@ -16,11 +16,13 @@ class AppRouter extends $AppRouter {
           page: HomeRoute.page,
         ),
         AutoRoute(page: MyEventsRoute.page),
+        AutoRoute(page: ProfileRoute.page),
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
     AutoRoute(page: CalendarRoute.page),
     AutoRoute(page: CreateEventRoute.page),
     AutoRoute(page: EventDetailRoute.page),
+    AutoRoute(page: EditProfileRoute.page),
   ];
 }

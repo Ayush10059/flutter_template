@@ -44,9 +44,7 @@ class MyEventsPage extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () {
                             context.navigateTo(
-                              EventDetailRoute(
-                                eventId: events[index].id,
-                              ),
+                              EventDetailRoute(event: events[index]),
                             );
                           },
                           child: Card(

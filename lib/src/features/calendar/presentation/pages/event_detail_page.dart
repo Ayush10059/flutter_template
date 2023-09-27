@@ -1,160 +1,212 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:calendar/src/core/extensions/typography_extension.dart';
+import 'package:calendar/src/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../localization/l10n.dart';
-import '../../../../core/async/async_value.dart';
-import '../../../../core/di/injector.dart';
-import '../../../../core/routes/app_router.dart';
 import '../../../../core/themes/app_styles.dart';
-import '../blocs/event_details/event_details_bloc.dart';
+import '../../domain/models/event_model.dart';
 
 @RoutePage()
 class EventDetailPage extends StatelessWidget {
   const EventDetailPage({
     super.key,
-    required this.eventId,
+    required this.event,
     this.onDelete,
   });
-  final String eventId;
+  final EventModel event;
   final VoidCallback? onDelete;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => EventDetailsBloc(
-        calendarRepository: getIt.get(),
-        eventId: eventId,
-      )..add(const EventDetailsEvent.getEventDetails()),
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-            appBar: AppBar(
-              iconTheme: IconThemeData(
-                color: Theme.of(context).colorScheme.primary,
+    return Builder(
+      builder: (context) {
+        SystemChrome.setSystemUIOverlayStyle(
+          const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+        );
+        return Scaffold(
+          extendBodyBehindAppBar: true,
+          body: Stack(
+            children: [
+              Container(
+                height: 220,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF0A013B),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: const AssetImage('assets/images/meeting.jpeg'),
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.4),
+                      BlendMode.modulate,
+                    ),
+                  ),
+                ),
               ),
-              actions: [
-                BlocBuilder<EventDetailsBloc, EventDetailsState>(
-                  builder: (context, state) {
-                    return PopupMenuButton(
-                      icon: const Icon(Icons.more_vert),
-                      itemBuilder: (context) {
-                        return [
-                          if (state.isData)
-                            PopupMenuItem<int>(
-                              value: 0,
-                              onTap: () {
-                                context.navigateTo(
-                                  CreateEventRoute(
-                                    event: context
-                                        .read<EventDetailsBloc>()
-                                        .state
-                                        .asData,
-                                  ),
-                                );
-                              },
-                              child: Text(l10n.edit),
-                            ),
-                          PopupMenuItem<int>(
-                            value: 1,
-                            child: Text(l10n.share),
-                          ),
-                          PopupMenuItem<int>(
-                            value: 2,
-                            onTap: onDelete,
-                            child: Text(l10n.delete),
-                          ),
-                        ];
-                      },
-                    );
+              Padding(
+                padding: EdgeInsets.only(top: 48.h, left: 4.w),
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  color: Colors.white,
+                  onPressed: () {
+                    context.back();
                   },
                 ),
-              ],
-            ),
-            body: BlocBuilder<EventDetailsBloc, EventDetailsState>(
-              builder: (context, state) {
-                switch (state) {
-                  case AsyncError(:final error):
-                    return Center(child: Text(error.toLocalized(l10n)));
-                  case AsyncLoading():
-                    return const CircularProgressIndicator();
-                  case AsyncData(:final data):
-                    return SingleChildScrollView(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 16.0,
-                        horizontal: 24.0,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              SafeArea(
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.fromLTRB(16.w, 40.h, 16.w, 8.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(
-                            data.title.trim(),
-                            style: AppStyles.text36PxBold.copyWith(
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
-                          ),
-                          10.verticalSpace,
-                          Text(
-                            'by EB Pearls',
-                            style: AppStyles.text14Px.copyWith(
-                              color: Color(0xFF9E9E9E),
-                            ),
-                          ),
-                          16.verticalSpace,
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.schedule,
-                                size: 20,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              10.horizontalSpace,
-                            ],
-                          ),
-                          10.verticalSpace,
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.calendar_today,
-                                size: 20,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              10.horizontalSpace,
-                              Expanded(
-                                child: Text(
-                                  DateFormat().format(data.startTime),
-                                  style: AppStyles.text14Px.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onBackground,
-                                  ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  event.title.trim(),
+                                  style: AppStyles.text28PxSemiBold.white,
                                 ),
-                              ),
-                            ],
-                          ),
-                          16.verticalSpace,
-                          if (data.description != null)
-                            Text(
-                              data.description!,
-                              style: AppStyles.text14Px.copyWith(
-                                color:
-                                    Theme.of(context).colorScheme.onBackground,
-                              ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.calendar_today,
+                                      size: 16,
+                                      color: Colors.white,
+                                    ),
+                                    8.horizontalSpace,
+                                    Text(
+                                      DateFormat.MMMd().format(event.startTime),
+                                      style: AppStyles.text12Px.white,
+                                    ),
+                                    16.horizontalSpace,
+                                    const Icon(
+                                      Icons.schedule,
+                                      size: 16,
+                                      color: Colors.white,
+                                    ),
+                                    8.horizontalSpace,
+                                    Text(
+                                      '${DateFormat.jm().format(event.startTime)} - ${DateFormat.jm().format(event.endTime)}',
+                                      style: AppStyles.text12Px.white,
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
+                          ),
+                          CustomButton(
+                            label: 'Book Now',
+                            onPressed: () {},
+                            height: 30.h,
+                            isDisabled: false,
+                            labelStyle: AppStyles.text12Px,
+                          )
                         ],
                       ),
-                    );
-                  default:
-                    return const CircularProgressIndicator();
-                }
-              },
-            ),
-          );
-        },
-      ),
+                      16.verticalSpace,
+                      Card(
+                        child: Container(
+                          width: double.infinity,
+                          margin: EdgeInsets.all(16.w),
+                          child: CustomScrollView(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            slivers: [
+                              SliverToBoxAdapter(
+                                child: Text(
+                                  event.title,
+                                  style: AppStyles.text24PxSemiBold,
+                                ),
+                              ),
+                              if (event.description != null)
+                                SliverToBoxAdapter(
+                                  child: Text(
+                                    event.description!,
+                                    style: AppStyles.text14Px.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
+                                    ),
+                                  ),
+                                ),
+                              SliverToBoxAdapter(
+                                child: 18.verticalSpace,
+                              ),
+                              SliverToBoxAdapter(
+                                child: Text(
+                                  'Speaker',
+                                  style: AppStyles.text18PxSemiBold,
+                                ),
+                              ),
+                              const SliverToBoxAdapter(
+                                child: Divider(),
+                              ),
+                              SliverToBoxAdapter(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: const ShapeDecoration(
+                                        color: Color(0xFFD9D9D9),
+                                        shape: OvalBorder(),
+                                      ),
+                                    ),
+                                    12.horizontalSpace,
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            event.title,
+                                            style: AppStyles.text14PxSemiBold,
+                                          ),
+                                          Text(
+                                            event.title,
+                                            style: AppStyles.text10Px,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SliverToBoxAdapter(
+                                child: 8.verticalSpace,
+                              ),
+                              SliverToBoxAdapter(
+                                child: Text(
+                                  'Guest',
+                                  style: AppStyles.text18PxSemiBold,
+                                ),
+                              ),
+                              const SliverToBoxAdapter(
+                                child: Divider(),
+                              ),
+                              SliverList.builder(
+                                itemCount: 50,
+                                itemBuilder: (context, index) => const Text(
+                                  'example123@gmail.com',
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

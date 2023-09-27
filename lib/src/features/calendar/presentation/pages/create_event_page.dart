@@ -213,8 +213,9 @@ class _AddGuestField extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           style: AppStyles.text14PxMedium.primary,
-          textInputAction: TextInputAction.next,
+          textInputAction: TextInputAction.done,
           onChanged: context.read<CreateEventCubit>().onAddGuestChanged,
+          // onFieldSubmitted: context.read<CreateEventCubit>().addGuestEmail,
           decoration: InputDecoration(
             errorText: state.hasError ? state.errorMessage : null,
             hintText: 'Add Guest',

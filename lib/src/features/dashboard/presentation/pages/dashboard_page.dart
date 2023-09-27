@@ -50,6 +50,7 @@ class DashboardPage extends StatelessWidget {
       routes: const [
         HomeRoute(),
         MyEventsRoute(),
+        ProfileRoute(),
       ],
       builder: (context, child, _) {
         final tabsRouter = AutoTabsRouter.of(context);
@@ -70,8 +71,12 @@ class DashboardPage extends StatelessWidget {
                   icon: Icon(Icons.home),
                 ),
                 const NavigationDestination(
-                  label: 'Top',
+                  label: 'My Events',
                   icon: Icon(Icons.star),
+                ),
+                const NavigationDestination(
+                  label: 'Profile',
+                  icon: Icon(Icons.person),
                 ),
               ],
             ),

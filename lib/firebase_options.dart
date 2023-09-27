@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1059522706761',
     projectId: 'fir-134b2',
     storageBucket: 'fir-134b2.appspot.com',
-    iosClientId: '1059522706761-h17at2nv14p17m9ief8acprnkg6aple2.apps.googleusercontent.com',
+    iosClientId:
+        '1059522706761-h17at2nv14p17m9ief8acprnkg6aple2.apps.googleusercontent.com',
     iosBundleId: 'com.ebpearls.calendar',
   );
 }
