@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
           title: const Text('Login'),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(20.r),
+          padding: 20.all,
           child: BlocListener<LoginCubit, LoginState>(
             listener: (context, state) {
               state.maybeWhen(
@@ -104,7 +104,7 @@ class _PasswordField extends StatelessWidget {
       selector: (state) => state.password,
       builder: (context, state) {
         return TextFormField(
-          style: AppStyles.text14PxMedium.primary,
+          style: AppStyles.text14PxMedium,
           keyboardType: TextInputType.visiblePassword,
           textInputAction: TextInputAction.done,
           obscureText: state.obscureText,
@@ -133,7 +133,7 @@ class _EmailField extends StatelessWidget {
       selector: (state) => state.email,
       builder: (context, state) {
         return TextFormField(
-          style: AppStyles.text14PxMedium.primary,
+          style: AppStyles.text14PxMedium,
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           onChanged: context.read<LoginFormCubit>().onEmailChange,

@@ -1,4 +1,3 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,44 +21,38 @@ class GoogleEventsPage extends StatelessWidget {
       appBar: AppBar(),
       body: BlocBuilder<CalendarCubit, CalendarState>(
         builder: (context, state) {
-          return Padding(
-            padding: EdgeInsets.all(16.h),
-            child: CustomScrollView(
-              slivers: [
-                // TODO: Dynamic floor
-                SliverToBoxAdapter(
-                  child: Text(
-                    'Ground Floor',
-                    style: AppStyles.text28PxSemiBold.primary,
-                  ),
+          return CustomScrollView(
+            slivers: [
+              // TODO: Dynamic floor
+              SliverToBoxAdapter(
+                child: Text(
+                  'Ground Floor',
+                  style: AppStyles.text28PxSemiBold,
                 ),
-                SliverList.builder(
-                  key: ObjectKey(state.events),
-                  itemCount: state.getEventMap().length,
-                  itemBuilder: (context, index) {
-                    List<EventModel> events =
-                        state.getEventMap().values.elementAt(index);
-                    return Container(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 4.h),
-                        child: GestureDetector(
-                          onTap: () {
-                            context.navigateTo(
-                              EventDetailRoute(event: events[index]),
-                            );
-                          },
-                          child: EventCard(
-                            event: events[index],
-                            isGoogleEvent: true,
-                          ),
-                        ),
+              ),
+              SliverList.builder(
+                key: ObjectKey(state.events),
+                itemCount: state.getEventMap().length,
+                itemBuilder: (context, index) {
+                  List<EventModel> events =
+                      state.getEventMap().values.elementAt(index);
+                  return Container(
+                    child: GestureDetector(
+                      onTap: () {
+                        context.navigateTo(
+                          EventDetailRoute(event: events[index]),
+                        );
+                      },
+                      child: EventCard(
+                        event: events[index],
+                        isGoogleEvent: true,
                       ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          );
+                    ).py(4),
+                  );
+                },
+              ),
+            ],
+          ).px(16);
         },
       ),
     );

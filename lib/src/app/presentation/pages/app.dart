@@ -2,16 +2,16 @@ import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:calendar/localization/generated/l10n.dart';
-import 'package:calendar/src/app/presentation/blocs/locale/locale_cubit.dart';
-import 'package:calendar/src/core/di/injector.dart';
-import 'package:calendar/src/core/routes/app_router.dart';
-import 'package:calendar/src/core/themes/theme.dart';
-import 'package:calendar/src/core/widgets/widgets.dart';
 
+import '../../../../localization/l10n.dart';
+import '../../../core/di/injector.dart';
+import '../../../core/routes/app_router.dart';
+import '../../../core/themes/theme.dart';
+import '../../../core/widgets/widgets.dart';
 import '../../../features/auth/presentation/blocs/login/login_cubit.dart';
 import '../../../features/calendar/presentation/blocs/calendar/calendar_cubit.dart';
 import '../blocs/app/app_cubit.dart';
+import '../blocs/locale/locale_cubit.dart';
 
 class App extends StatelessWidget {
   App({super.key});

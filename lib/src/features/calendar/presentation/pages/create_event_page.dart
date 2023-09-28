@@ -43,81 +43,78 @@ class CreateEventPage extends HookWidget {
               },
               builder: (context, state) {
                 return SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  padding: 16.horizontal,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         l10n.bookManualEvent,
-                        style: AppStyles.text24PxSemiBold.primary,
+                        style: AppStyles.text24PxSemiBold,
                       ),
                       12.verticalSpace,
                       Card(
                         elevation: 8,
-                        child: Padding(
-                          padding: EdgeInsets.all(12.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const _TitleField(),
-                              8.verticalSpace,
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: DateTimeFormField(
-                                      key: const ValueKey('start time'),
-                                      initialValue: state.startTime,
-                                      validator: (v) => RequiredValidator(
-                                        errorText: l10n.validationRequired,
-                                      ).call(v?.toString() ?? ''),
-                                      onChanged: (value) => context
-                                          .read<CreateEventCubit>()
-                                          .onStartDateChanged(value),
-                                    ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const _TitleField(),
+                            8.verticalSpace,
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: DateTimeFormField(
+                                    key: const ValueKey('start time'),
+                                    initialValue: state.startTime,
+                                    validator: (v) => RequiredValidator(
+                                      errorText: l10n.validationRequired,
+                                    ).call(v?.toString() ?? ''),
+                                    onChanged: (value) => context
+                                        .read<CreateEventCubit>()
+                                        .onStartDateChanged(value),
                                   ),
-                                  8.horizontalSpace,
-                                  Expanded(
-                                    child: DateTimeFormField(
-                                      key: const ValueKey('end time'),
-                                      initialValue: state.startTime,
-                                      validator: (v) => RequiredValidator(
-                                        errorText: l10n.validationRequired,
-                                      ).call(v?.toString() ?? ''),
-                                      onChanged: (value) => context
-                                          .read<CreateEventCubit>()
-                                          .onStartDateChanged(value),
-                                    ),
+                                ),
+                                8.horizontalSpace,
+                                Expanded(
+                                  child: DateTimeFormField(
+                                    key: const ValueKey('end time'),
+                                    initialValue: state.startTime,
+                                    validator: (v) => RequiredValidator(
+                                      errorText: l10n.validationRequired,
+                                    ).call(v?.toString() ?? ''),
+                                    onChanged: (value) => context
+                                        .read<CreateEventCubit>()
+                                        .onStartDateChanged(value),
                                   ),
-                                ],
-                              ),
-                              8.verticalSpace,
-                              const _DescriptionField(),
-                              8.verticalSpace,
-                              Text(
-                                l10n.notify,
-                                style: AppStyles.text12Px,
-                              ),
-                              4.verticalSpace,
-                              const _NotifyField(),
-                              8.verticalSpace,
-                              Text(
-                                l10n.addGuest,
-                                style: AppStyles.text12Px,
-                              ),
-                              4.verticalSpace,
-                              const _AddGuestField(),
-                              8.verticalSpace,
-                              CustomButton(
-                                label: l10n.save,
-                                onPressed: () {
-                                  context.read<CreateEventCubit>().onSubmit();
-                                },
-                                isDisabled: !state.isValid,
-                                fullWidth: true,
-                              ),
-                            ],
-                          ),
-                        ),
+                                ),
+                              ],
+                            ),
+                            8.verticalSpace,
+                            const _DescriptionField(),
+                            8.verticalSpace,
+                            Text(
+                              l10n.notify,
+                              style: AppStyles.text12Px,
+                            ),
+                            4.verticalSpace,
+                            const _NotifyField(),
+                            8.verticalSpace,
+                            Text(
+                              l10n.addGuest,
+                              style: AppStyles.text12Px,
+                            ),
+                            4.verticalSpace,
+                            const _AddGuestField(),
+                            8.verticalSpace,
+                            CustomButton(
+                              label: l10n.save,
+                              onPressed: () {
+                                context.read<CreateEventCubit>().onSubmit();
+                              },
+                              isDisabled: !state.isValid,
+                              fullWidth: true,
+                            ),
+                          ],
+                        ).pad(12),
                       ),
                     ],
                   ),
@@ -140,7 +137,7 @@ class _TitleField extends StatelessWidget {
       selector: (state) => state.title,
       builder: (context, state) {
         return TextFormField(
-          style: AppStyles.text14PxMedium.primary,
+          style: AppStyles.text14PxMedium,
           textInputAction: TextInputAction.next,
           onChanged: context.read<CreateEventCubit>().onTitleChanged,
           decoration: InputDecoration(
@@ -164,7 +161,7 @@ class _DescriptionField extends StatelessWidget {
         return TextFormField(
           minLines: 5,
           maxLines: 5,
-          style: AppStyles.text14PxMedium.primary,
+          style: AppStyles.text14PxMedium,
           textInputAction: TextInputAction.next,
           onChanged: context.read<CreateEventCubit>().onDescriptionChanged,
           decoration: InputDecoration(
@@ -216,7 +213,7 @@ class _AddGuestField extends StatelessWidget {
       selector: (state) => state.addGuest,
       builder: (context, state) {
         return TextFormField(
-          style: AppStyles.text14PxMedium.primary,
+          style: AppStyles.text14PxMedium,
           textInputAction: TextInputAction.done,
           onChanged: context.read<CreateEventCubit>().onAddGuestChanged,
           // onFieldSubmitted: context.read<CreateEventCubit>().addGuestEmail,

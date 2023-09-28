@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2022. 
- * Author: Kishor Mainali
- * Company: EB Pearls
- */
-
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar/src/core/extensions/extensions.dart';
@@ -18,7 +12,7 @@ class CustomButton extends StatelessWidget {
     this.disabledColor = AppColors.textGrey,
     this.splashColor = AppColors.textGrey,
     this.labelStyle,
-    this.textColor = AppColors.white,
+    this.textColor = AppColors.black,
     this.loading = false,
     this.isDisabled = true,
     this.fullWidth = false,

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
 //theme primary color
-  static const Color primary = const Color(0xFF00274B);
+  static const Color primary = const Color(0xFFFFCD06);
+  static const Color secondary = const Color(0xFF0A013B);
+  static const Color tertiary = const Color(0xFF7350FF);
+
+  static const Color iconColor = const Color(0xFF757575);
 
   //text colors
   static const Color textDark = const Color(0xFF222222);
@@ -25,7 +29,7 @@ abstract class AppColors {
   static const Color secondaryButtonBackground = const Color(0xFFEBEBEB);
 
   //default
-  static const Color border = const Color(0xFFD6D6D6);
+  static const Color border = const Color(0xFFA5A5A5);
   static const Color dashBorder = const Color(0xFFABC4F1);
   static const Color white = const Color(0xFFFFFFFF);
   static const Color black = const Color(0xFF000000);

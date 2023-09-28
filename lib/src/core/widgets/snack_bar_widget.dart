@@ -33,29 +33,26 @@ class SnackbarWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppStyles.text16PxMedium
-                        .copyWith(color: AppColors.white),
-                  ),
-                  10.verticalSpace,
-                  Text(
-                    message,
-                    style: AppStyles.text14Px.copyWith(color: AppColors.white),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style:
+                      AppStyles.text16PxMedium.copyWith(color: AppColors.white),
+                ),
+                10.verticalSpace,
+                Text(
+                  message,
+                  style: AppStyles.text14Px.copyWith(color: AppColors.white),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ).pxpy(12, 10),
           ),
         ],
       ),

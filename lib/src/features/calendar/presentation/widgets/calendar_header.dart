@@ -1,3 +1,4 @@
+import 'package:calendar/src/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:remixicon/remixicon.dart';
@@ -26,42 +27,39 @@ class CalendarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final headerText = DateFormat.yMMMM().format(focusedDay);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () {
-              onLeftArrowTap();
-            },
-            child: const Icon(
-              Remix.arrow_left_s_line,
-              size: 32,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        GestureDetector(
+          onTap: () {
+            onLeftArrowTap();
+          },
+          child: const Icon(
+            Remix.arrow_left_s_line,
+            size: 32,
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            onYearSelectionTap();
+          },
+          child: Text(
+            headerText,
+            style: AppStyles.text14PxBold.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
-          InkWell(
-            onTap: () {
-              onYearSelectionTap();
-            },
-            child: Text(
-              headerText,
-              style: AppStyles.text14PxBold.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-            ),
+        ),
+        GestureDetector(
+          onTap: () {
+            onRightArrowTap();
+          },
+          child: const Icon(
+            Remix.arrow_right_s_line,
+            size: 32,
           ),
-          GestureDetector(
-            onTap: () {
-              onRightArrowTap();
-            },
-            child: const Icon(
-              Remix.arrow_right_s_line,
-              size: 32,
-            ),
-          ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ).pxpy(16, 4);
   }
 }

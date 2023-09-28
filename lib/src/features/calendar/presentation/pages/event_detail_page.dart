@@ -1,5 +1,6 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:calendar/src/core/extensions/extensions.dart';
 import 'package:calendar/src/core/extensions/typography_extension.dart';
 import 'package:calendar/src/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -44,16 +45,13 @@ class EventDetailPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 48.h, left: 4.w),
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  color: Colors.white,
-                  onPressed: () {
-                    context.back();
-                  },
-                ),
-              ),
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                color: Colors.white,
+                onPressed: () {
+                  context.back();
+                },
+              ).pOnly(top: 48, left: 4),
               SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.fromLTRB(16.w, 40.h, 16.w, 8.h),
@@ -113,7 +111,7 @@ class EventDetailPage extends StatelessWidget {
                       Card(
                         child: Container(
                           width: double.infinity,
-                          margin: EdgeInsets.all(16.w),
+                          margin: 16.all,
                           child: CustomScrollView(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),

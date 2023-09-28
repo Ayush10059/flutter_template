@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:calendar/src/features/auth/domain/repository/auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../features/auth/domain/repository/auth_repository.dart';
 
 part 'app_cubit.freezed.dart';
 

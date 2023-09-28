@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:ferry/ferry.dart';
-import 'package:calendar/src/core/base/base_remote_source.dart';
+
+import '../../../../core/base/base_remote_source.dart';
 
 abstract class CalendarRemoteSource {}
 

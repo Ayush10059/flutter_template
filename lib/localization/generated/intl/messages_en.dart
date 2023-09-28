@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Email": MessageLookupByLibrary.simpleMessage("email"),
         "addGuest": MessageLookupByLibrary.simpleMessage("Add Guest"),
         "alert": MessageLookupByLibrary.simpleMessage("Alert"),
         "alertDescription": MessageLookupByLibrary.simpleMessage(
@@ -42,9 +43,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "designation": MessageLookupByLibrary.simpleMessage("Designation"),
         "doesNotRepeat":
             MessageLookupByLibrary.simpleMessage("Does Not Repeat"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email Address"),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("Enter Email Address"),
@@ -54,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyWeek": MessageLookupByLibrary.simpleMessage("Every Week"),
         "everyYear": MessageLookupByLibrary.simpleMessage("Every Year"),
         "googleEvent": MessageLookupByLibrary.simpleMessage("Google Event"),
+        "googleEvents": MessageLookupByLibrary.simpleMessage("Google Events"),
         "guest": MessageLookupByLibrary.simpleMessage("Guest"),
         "locationExceptionDenied": MessageLookupByLibrary.simpleMessage(
             "Location permissions are denied."),
@@ -63,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Location is not enabled."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "myEvents": MessageLookupByLibrary.simpleMessage("My Events"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "networkExceptionConnection": MessageLookupByLibrary.simpleMessage(
             "Connection failed. Please check you have working internet connection."),
         "networkExceptionTimeout": MessageLookupByLibrary.simpleMessage(
@@ -74,9 +79,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "notify": MessageLookupByLibrary.simpleMessage("Notify"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Enter Password"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "preferredFloor":
+            MessageLookupByLibrary.simpleMessage("Preferred Floor"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "serverError": MessageLookupByLibrary.simpleMessage("Server Error"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "speaker": MessageLookupByLibrary.simpleMessage("Speaker"),
         "splashPageTitle": MessageLookupByLibrary.simpleMessage("Splash Page"),
@@ -89,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("UnAuthorized Access"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Unexpected Error"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
         "validationRequired":
             MessageLookupByLibrary.simpleMessage("Validation Required"),
         "xceptionCalendarEventAdd":

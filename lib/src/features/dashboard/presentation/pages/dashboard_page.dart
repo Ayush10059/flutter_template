@@ -1,15 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:calendar/src/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:remixicon/remixicon.dart';
 
 import '../../../../core/di/injector.dart';
 import '../../../../core/routes/app_router.dart';
+import '../../../../core/widgets/custom_bottom_bar.dart';
+import '../../../../core/widgets/widgets.dart';
 import '../../../auth/presentation/blocs/login/login_cubit.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SearchPage extends StatelessWidget {
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,23 +21,21 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () => getIt<AppRouter>().push(const CalendarRoute()),
-            icon: const Icon(Remix.calendar_2_line),
+            icon: const Icon(Icons.calendar_month),
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () {
-                context.read<LoginCubit>().logout();
-              },
-              child: const Text('Logout'),
-            ),
-          ],
-        ),
-      ),
+      body: Column(
+        children: [
+          CustomButton(
+            onPressed: () {
+              context.read<LoginCubit>().logout();
+            },
+            label: 'Logout',
+            isDisabled: false,
+          ),
+        ],
+      ).pad(20),
     );
   }
 }
@@ -48,7 +48,7 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter.pageView(
       routes: const [
-        HomeRoute(),
+        SearchRoute(),
         MyEventsRoute(),
         GoogleEventsRoute(),
         ProfileRoute(),
@@ -56,35 +56,12 @@ class DashboardPage extends StatelessWidget {
       builder: (context, child, _) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
-          extendBody: true,
           body: child,
-          bottomNavigationBar: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20.0),
-              topRight: Radius.circular(20.0),
-            ),
-            child: NavigationBar(
-              selectedIndex: tabsRouter.activeIndex,
-              onDestinationSelected: tabsRouter.setActiveIndex,
-              destinations: [
-                const NavigationDestination(
-                  label: 'Home',
-                  icon: Icon(Icons.home),
-                ),
-                const NavigationDestination(
-                  label: 'My Events',
-                  icon: Icon(Icons.star),
-                ),
-                const NavigationDestination(
-                  label: 'Google Events',
-                  icon: Icon(Icons.star),
-                ),
-                const NavigationDestination(
-                  label: 'Profile',
-                  icon: Icon(Icons.person),
-                ),
-              ],
-            ),
+          bottomNavigationBar: CustomBottomBar(
+            onTap: (index) {
+              tabsRouter.setActiveIndex(index);
+            },
+            activeIndex: tabsRouter.activeIndex,
           ),
         );
       },

@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:ferry/ferry.dart';
-import 'package:calendar/src/core/base/env.dart';
-import 'package:calendar/src/core/routes/app_router.dart';
 import 'package:gql_dio_link/gql_dio_link.dart';
 import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../core/base/env.dart';
+import '../../core/routes/app_router.dart';
 import '../../features/auth/data/models/user_model/user_model.dart';
 import '../../features/calendar/domain/models/event_model.dart';
 import '../logging/logger.dart';

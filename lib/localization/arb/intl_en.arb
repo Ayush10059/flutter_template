@@ -56,5 +56,17 @@
   "speaker": "Speaker",
   "guest": "Guest",
   "alert": "Alert",
-  "alertDescription": "The chosen time slot for this room is not available for booking. Please select the available room below."
+  "alertDescription": "The chosen time slot for this room is not available for booking. Please select the available room below.",
+  "search": "Search",
+  "myEvents": "My Events",
+  "googleEvents": "Google Events",
+  "settings": "Settings",
+  "profile": "Profile",
+  "editProfile": "Edit Profile",
+  "name": "Name",
+  "Email": "email",
+  "designation": "Designation",
+  "phone": "Phone",
+  "preferredFloor": "Preferred Floor",
+  "update": "Update"
 }

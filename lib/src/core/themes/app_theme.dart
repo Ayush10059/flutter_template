@@ -38,7 +38,7 @@ class AppTheme {
         color: AppColors.white,
         borderRadius: 24.rounded,
       ),
-      labelPadding: EdgeInsets.symmetric(horizontal: 20.w),
+      labelPadding: 20.horizontal,
       labelStyle: AppStyles.text14PxBold.textDark,
       labelColor: AppColors.textDark,
       unselectedLabelColor: AppColors.textLight,

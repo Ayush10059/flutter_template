@@ -26,6 +26,11 @@ extension WidgetExtensionX on Widget {
         child: this,
       );
 
+  Padding pxpy(double px, double py) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: px.w, vertical: py.h),
+        child: this,
+      );
+
   Padding pOnly(
           {double left = 0,
           double top = 0,

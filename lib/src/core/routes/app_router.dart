@@ -12,9 +12,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: DashboardRoute.page,
       children: [
-        AutoRoute(
-          page: HomeRoute.page,
-        ),
+        AutoRoute(page: SearchRoute.page),
         AutoRoute(page: MyEventsRoute.page),
         AutoRoute(page: GoogleEventsRoute.page),
         AutoRoute(page: ProfileRoute.page),

@@ -62,7 +62,7 @@ dependencies:
   #path_provider
   path_provider: ^2.0.13
 
-  # google fonts
+  #google fonts
   google_fonts: ^5.1.0
 
   #native splash
@@ -77,7 +77,6 @@ dependencies:
 
   #calendar
   table_calendar: ^3.0.8
-
   month_picker_dialog: ^2.0.0
 
   #from field validator
@@ -86,7 +85,6 @@ dependencies:
   #animation
   flutter_animate: ^4.1.1+1
 
-  #icons
   remixicon: ^1.0.0
 
   #google
@@ -122,19 +120,22 @@ dev_dependencies:
 
   injectable_generator: ^2.4.0
 
-  # route generator
+  #route generator
   auto_route_generator: ^7.3.1
 
-  # ferry generator
+  # erry generator
   ferry_generator: ^0.8.1
 
   #test packages
   mocktail: ^1.0.0
   bloc_test: ^9.1.4
 
-  # launcher icons
+  #launcher icons
   flutter_launcher_icons: ^0.13.1
   envied_generator: ^0.3.0+3
+
+  #assets
+  flutter_gen_runner: ^5.3.2
 
 dependency_overrides:
   path: ^1.8.3
@@ -163,3 +164,7 @@ flutter_native_splash:
   android_12:
     image: assets/images/splash_12.png
     icon_background_color: "#FFFFFF"
+
+#flutter asset generator
+flutter_gen:
+  output: lib/gen/
