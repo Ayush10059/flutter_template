@@ -50,6 +50,7 @@ class DashboardPage extends StatelessWidget {
       routes: const [
         HomeRoute(),
         MyEventsRoute(),
+        GoogleEventsRoute(),
         ProfileRoute(),
       ],
       builder: (context, child, _) {
@@ -72,6 +73,10 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const NavigationDestination(
                   label: 'My Events',
+                  icon: Icon(Icons.star),
+                ),
+                const NavigationDestination(
+                  label: 'Google Events',
                   icon: Icon(Icons.star),
                 ),
                 const NavigationDestination(

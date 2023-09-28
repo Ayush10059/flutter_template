@@ -11,8 +11,8 @@ import '../blocs/calendar/calendar_cubit.dart';
 import '../widgets/event_card.dart';
 
 @RoutePage()
-class MyEventsPage extends StatelessWidget {
-  const MyEventsPage({
+class GoogleEventsPage extends StatelessWidget {
+  const GoogleEventsPage({
     super.key,
   });
 
@@ -26,6 +26,7 @@ class MyEventsPage extends StatelessWidget {
             padding: EdgeInsets.all(16.h),
             child: CustomScrollView(
               slivers: [
+                // TODO: Dynamic floor
                 SliverToBoxAdapter(
                   child: Text(
                     'Ground Floor',
@@ -49,7 +50,7 @@ class MyEventsPage extends StatelessWidget {
                           },
                           child: EventCard(
                             event: events[index],
-                            isGoogleEvent: false,
+                            isGoogleEvent: true,
                           ),
                         ),
                       ),

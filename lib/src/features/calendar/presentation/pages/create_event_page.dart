@@ -48,7 +48,7 @@ class CreateEventPage extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Book manual event',
+                        l10n.bookManualEvent,
                         style: AppStyles.text24PxSemiBold.primary,
                       ),
                       12.verticalSpace,
@@ -94,14 +94,14 @@ class CreateEventPage extends HookWidget {
                               const _DescriptionField(),
                               8.verticalSpace,
                               Text(
-                                'Notify',
+                                l10n.notify,
                                 style: AppStyles.text12Px,
                               ),
                               4.verticalSpace,
                               const _NotifyField(),
                               8.verticalSpace,
                               Text(
-                                'Add Guest',
+                                l10n.addGuest,
                                 style: AppStyles.text12Px,
                               ),
                               4.verticalSpace,
@@ -145,7 +145,7 @@ class _TitleField extends StatelessWidget {
           onChanged: context.read<CreateEventCubit>().onTitleChanged,
           decoration: InputDecoration(
             errorText: state.hasError ? state.errorMessage : null,
-            hintText: 'Title',
+            hintText: l10n.title,
           ),
         );
       },
@@ -169,7 +169,7 @@ class _DescriptionField extends StatelessWidget {
           onChanged: context.read<CreateEventCubit>().onDescriptionChanged,
           decoration: InputDecoration(
             errorText: state.hasError ? state.errorMessage : null,
-            hintText: 'Description',
+            hintText: l10n.description,
           ),
         );
       },
@@ -197,6 +197,10 @@ class _NotifyField extends StatelessWidget {
           onChanged: (value) => context
               .read<CreateEventCubit>()
               .onNotifyChanged(value ?? notifyList.first),
+          decoration: InputDecoration(
+            errorText: state.hasError ? state.errorMessage : null,
+            hintText: l10n.notify,
+          ),
         );
       },
     );
@@ -218,7 +222,7 @@ class _AddGuestField extends StatelessWidget {
           // onFieldSubmitted: context.read<CreateEventCubit>().addGuestEmail,
           decoration: InputDecoration(
             errorText: state.hasError ? state.errorMessage : null,
-            hintText: 'Add Guest',
+            hintText: l10n.addGuest,
           ),
         );
       },

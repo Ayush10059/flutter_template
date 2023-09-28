@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../localization/l10n.dart';
 import '../../../../core/themes/app_styles.dart';
 import '../../domain/models/event_model.dart';
 
@@ -100,7 +101,7 @@ class EventDetailPage extends StatelessWidget {
                             ),
                           ),
                           CustomButton(
-                            label: 'Book Now',
+                            label: l10n.bookNow,
                             onPressed: () {},
                             height: 30.h,
                             isDisabled: false,
@@ -139,7 +140,7 @@ class EventDetailPage extends StatelessWidget {
                               ),
                               SliverToBoxAdapter(
                                 child: Text(
-                                  'Speaker',
+                                  l10n.speaker,
                                   style: AppStyles.text18PxSemiBold,
                                 ),
                               ),
@@ -182,7 +183,7 @@ class EventDetailPage extends StatelessWidget {
                               ),
                               SliverToBoxAdapter(
                                 child: Text(
-                                  'Guest',
+                                  l10n.guest,
                                   style: AppStyles.text18PxSemiBold,
                                 ),
                               ),

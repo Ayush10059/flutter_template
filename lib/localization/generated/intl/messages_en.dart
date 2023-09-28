@@ -22,14 +22,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addGuest": MessageLookupByLibrary.simpleMessage("Add Guest"),
+        "alert": MessageLookupByLibrary.simpleMessage("Alert"),
+        "alertDescription": MessageLookupByLibrary.simpleMessage(
+            "The chosen time slot for this room is not available for booking. Please select the available room below."),
         "allDay": MessageLookupByLibrary.simpleMessage("All Day"),
         "areYouSure": MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "bookManualEvent":
+            MessageLookupByLibrary.simpleMessage("Book Manual Event"),
+        "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
+        "bookYourEvent":
+            MessageLookupByLibrary.simpleMessage("Book Your Event"),
         "calendarSyncSuccessful":
             MessageLookupByLibrary.simpleMessage("Calendar sync successful"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "createCustomEvent":
+            MessageLookupByLibrary.simpleMessage("Create Custom Event"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "doesNotRepeat":
             MessageLookupByLibrary.simpleMessage("Does Not Repeat"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
@@ -41,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyMonth": MessageLookupByLibrary.simpleMessage("Every Month"),
         "everyWeek": MessageLookupByLibrary.simpleMessage("Every Week"),
         "everyYear": MessageLookupByLibrary.simpleMessage("Every Year"),
+        "googleEvent": MessageLookupByLibrary.simpleMessage("Google Event"),
+        "guest": MessageLookupByLibrary.simpleMessage("Guest"),
         "locationExceptionDenied": MessageLookupByLibrary.simpleMessage(
             "Location permissions are denied."),
         "locationExceptionDeniedForever": MessageLookupByLibrary.simpleMessage(
@@ -48,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "locationNotEnabled":
             MessageLookupByLibrary.simpleMessage("Location is not enabled."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "myEvents": MessageLookupByLibrary.simpleMessage("My Events"),
         "networkExceptionConnection": MessageLookupByLibrary.simpleMessage(
             "Connection failed. Please check you have working internet connection."),
         "networkExceptionTimeout": MessageLookupByLibrary.simpleMessage(
@@ -56,15 +71,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong while connecting to server."),
         "noInternet":
             MessageLookupByLibrary.simpleMessage("No Internet Connection"),
+        "notify": MessageLookupByLibrary.simpleMessage("Notify"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Enter Password"),
         "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "serverError": MessageLookupByLibrary.simpleMessage("Server Error"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "speaker": MessageLookupByLibrary.simpleMessage("Speaker"),
         "splashPageTitle": MessageLookupByLibrary.simpleMessage("Splash Page"),
         "startDate": MessageLookupByLibrary.simpleMessage("Start Date"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "todaysBookings":
+            MessageLookupByLibrary.simpleMessage("Today\'s Bookings"),
         "unAuthorizedAccess":
             MessageLookupByLibrary.simpleMessage("UnAuthorized Access"),
         "unexpectedError":

@@ -469,6 +469,156 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Book Now`
+  String get bookNow {
+    return Intl.message(
+      'Book Now',
+      name: 'bookNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Your Event`
+  String get bookYourEvent {
+    return Intl.message(
+      'Book Your Event',
+      name: 'bookYourEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Google Event`
+  String get googleEvent {
+    return Intl.message(
+      'Google Event',
+      name: 'googleEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Custom Event`
+  String get createCustomEvent {
+    return Intl.message(
+      'Create Custom Event',
+      name: 'createCustomEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today's Bookings`
+  String get todaysBookings {
+    return Intl.message(
+      'Today\'s Bookings',
+      name: 'todaysBookings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Events`
+  String get myEvents {
+    return Intl.message(
+      'My Events',
+      name: 'myEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Manual Event`
+  String get bookManualEvent {
+    return Intl.message(
+      'Book Manual Event',
+      name: 'bookManualEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notify`
+  String get notify {
+    return Intl.message(
+      'Notify',
+      name: 'notify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Guest`
+  String get addGuest {
+    return Intl.message(
+      'Add Guest',
+      name: 'addGuest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speaker`
+  String get speaker {
+    return Intl.message(
+      'Speaker',
+      name: 'speaker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guest`
+  String get guest {
+    return Intl.message(
+      'Guest',
+      name: 'guest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Alert`
+  String get alert {
+    return Intl.message(
+      'Alert',
+      name: 'alert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The chosen time slot for this room is not available for booking. Please select the available room below.`
+  String get alertDescription {
+    return Intl.message(
+      'The chosen time slot for this room is not available for booking. Please select the available room below.',
+      name: 'alertDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

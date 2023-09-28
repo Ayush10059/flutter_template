@@ -16,6 +16,7 @@ class AppRouter extends $AppRouter {
           page: HomeRoute.page,
         ),
         AutoRoute(page: MyEventsRoute.page),
+        AutoRoute(page: GoogleEventsRoute.page),
         AutoRoute(page: ProfileRoute.page),
         RedirectRoute(path: '*', redirectTo: ''),
       ],

@@ -41,5 +41,20 @@
   "areYouSure": "Are you sure?",
   "youCannotUndoThisAction": "You cannot undo this action.",
   "confirm": "Confirm",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "bookNow": "Book Now",
+  "bookYourEvent": "Book Your Event",
+  "googleEvent": "Google Event",
+  "createCustomEvent": "Create Custom Event",
+  "todaysBookings": "Today's Bookings",
+  "myEvents": "My Events",
+  "bookManualEvent": "Book Manual Event",
+  "title": "Title",
+  "description": "Description",
+  "notify": "Notify",
+  "addGuest": "Add Guest",
+  "speaker": "Speaker",
+  "guest": "Guest",
+  "alert": "Alert",
+  "alertDescription": "The chosen time slot for this room is not available for booking. Please select the available room below."
 }

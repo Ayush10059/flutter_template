@@ -1,21 +1,22 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:calendar/src/core/extensions/extensions.dart';
-import 'package:calendar/src/core/themes/app_styles.dart';
-import 'package:calendar/src/core/widgets/widgets.dart';
+import 'package:calendar/localization/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/di/injector.dart';
 import '../../../../core/routes/app_router.dart';
+import '../../../../core/themes/app_styles.dart';
+import '../../../../core/widgets/widgets.dart';
 import '../../domain/models/event_model.dart';
 import '../../utils/utils.dart';
 import '../blocs/calendar/calendar_cubit.dart';
 import '../widgets/calendar_header.dart';
-import '../widgets/event_card.dart';
+import '../widgets/slidable_event_card.dart';
 
 @RoutePage()
 class CalendarPage extends StatefulWidget {
@@ -47,9 +48,33 @@ class _CalendarPageState extends State<CalendarPage> {
                     ),
                     const Spacer(),
                     CustomButton(
-                      label: 'Book Now',
+                      label: l10n.bookNow,
                       onPressed: () {
-                        getIt<AppRouter>().push(CreateEventRoute());
+                        context.showCustomDialog(
+                          title: l10n.bookYourEvent,
+                          description: 'Lorem ipsum',
+                          content: Column(
+                            children: [
+                              30.verticalSpace,
+                              CustomButton(
+                                label: l10n.googleEvent,
+                                onPressed: () {},
+                                fullWidth: true,
+                                isDisabled: false,
+                                labelStyle: AppStyles.text14PxSemiBold,
+                              ),
+                              25.verticalSpace,
+                              CustomButton(
+                                label: l10n.createCustomEvent,
+                                onPressed: () =>
+                                    getIt<AppRouter>().push(CreateEventRoute()),
+                                fullWidth: true,
+                                isDisabled: false,
+                                labelStyle: AppStyles.text14PxSemiBold,
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       isDisabled: false,
                       labelStyle: AppStyles.text14PxSemiBold,
@@ -182,7 +207,7 @@ class _CalendarPageState extends State<CalendarPage> {
                               Row(
                                 children: [
                                   Text(
-                                    'Todays Bookings',
+                                    l10n.todaysBookings,
                                     style: AppStyles.text20PxSemiBold,
                                   ),
                                   const Spacer(),
@@ -198,7 +223,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     ),
                                   ),
                                   Text(
-                                    'My Events',
+                                    l10n.myEvents,
                                     style: AppStyles.text12Px,
                                   ),
                                 ],
@@ -213,7 +238,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           itemBuilder: (context, index) {
                             List<EventModel> events =
                                 state.getEventMap().values.elementAt(index);
-                            return EventCard(
+                            return SlidableEventCard(
                               event: events[index],
                             );
                           },
