@@ -11,7 +11,6 @@ targets:
         options:
           schema: calendar|lib/graphql/schema.graphql
 
-
       json_serializable:
         options:
           explicit_to_json: true
@@ -30,6 +29,7 @@ targets:
             - lib/src/**/**_exception.dart
             - lib/src/**/**_entity.dart
             - lib/src/**/**_model.dart
+            - lib/src/**/**_dto.dart
             - lib/src/**/**_bloc.dart
             - lib/src/**/**_cubit.dart
             - lib/src/**/field.dart

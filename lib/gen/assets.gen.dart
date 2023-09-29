@@ -55,20 +55,27 @@ class $AssetsIconsGen {
   /// File path: assets/icons/.gitkeep
   String get gitkeep => 'assets/icons/.gitkeep';
 
-  /// File path: assets/icons/Calendar.svg
-  String get calendar => 'assets/icons/Calendar.svg';
+  /// File path: assets/icons/calendar.svg
+  String get calendar => 'assets/icons/calendar.svg';
 
-  /// File path: assets/icons/Glyph.svg
-  String get glyph => 'assets/icons/Glyph.svg';
+  /// File path: assets/icons/glyph.svg
+  String get glyph => 'assets/icons/glyph.svg';
 
-  /// File path: assets/icons/Google-Calendar.svg
-  String get googleCalendar => 'assets/icons/Google-Calendar.svg';
+  /// File path: assets/icons/google-calendar.svg
+  String get googleCalendar => 'assets/icons/google-calendar.svg';
 
-  /// File path: assets/icons/Search.svg
-  String get search => 'assets/icons/Search.svg';
+  /// File path: assets/icons/notification.svg
+  String get notification => 'assets/icons/notification.svg';
+
+  /// File path: assets/icons/profile.svg
+  String get profile => 'assets/icons/profile.svg';
+
+  /// File path: assets/icons/search.svg
+  String get search => 'assets/icons/search.svg';
 
   /// List of all assets
-  List<String> get values => [gitkeep, calendar, glyph, googleCalendar, search];
+  List<String> get values =>
+      [gitkeep, calendar, glyph, googleCalendar, notification, profile, search];
 }
 
 class $AssetsImagesGen {

@@ -10,9 +10,11 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.keyboardType,
     this.textInputAction,
+    this.errorText,
   });
 
   final String? labelText;
+  final String? errorText;
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
@@ -25,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: labelText,
+        errorText: errorText,
         contentPadding: EdgeInsets.symmetric(
           vertical: 8.h,
           horizontal: 16.w,

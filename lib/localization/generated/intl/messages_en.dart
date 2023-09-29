@@ -76,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong while connecting to server."),
         "noInternet":
             MessageLookupByLibrary.simpleMessage("No Internet Connection"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "notify": MessageLookupByLibrary.simpleMessage("Notify"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Enter Password"),

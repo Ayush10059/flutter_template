@@ -8,6 +8,7 @@ import '../../core/base/env.dart';
 import '../../core/routes/app_router.dart';
 import '../../features/auth/data/models/user_model/user_model.dart';
 import '../../features/calendar/domain/models/event_model.dart';
+import '../../features/profile/data/models/profile_model/profile_model.dart';
 import '../logging/logger.dart';
 import '../network/auth_interceptor.dart';
 
@@ -22,6 +23,7 @@ abstract class RegisterModules {
       await LocalStorage.getInstance(registerAdapters: () {
         Hive..registerAdapter(UserModelAdapter());
         Hive..registerAdapter(EventModelAdapter());
+        Hive..registerAdapter(ProfileModelAdapter());
       });
 
   @lazySingleton

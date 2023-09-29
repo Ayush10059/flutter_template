@@ -51,7 +51,7 @@ class DashboardPage extends StatelessWidget {
         SearchRoute(),
         MyEventsRoute(),
         GoogleEventsRoute(),
-        ProfileRoute(),
+        SettingsRoute(),
       ],
       builder: (context, child, _) {
         final tabsRouter = AutoTabsRouter.of(context);

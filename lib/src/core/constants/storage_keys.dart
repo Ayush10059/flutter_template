@@ -5,4 +5,5 @@ class StorageKeys {
   static const String sessionBox = 'hive-session-box';
   static const String authKey = 'auth-key';
   static const String eventKey = 'event-key';
+  static const String profileKey = 'profile-key';
 }

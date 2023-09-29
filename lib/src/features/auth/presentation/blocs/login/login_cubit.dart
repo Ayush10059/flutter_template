@@ -1,8 +1,8 @@
-import 'package:calendar/src/features/auth/data/models/login_request_dto/login_request_dto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../data/models/login_request_dto/login_request_dto.dart';
 import '../../../domain/repository/auth_repository.dart';
 
 part 'login_cubit.freezed.dart';

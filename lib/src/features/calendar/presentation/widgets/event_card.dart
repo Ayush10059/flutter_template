@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:remixicon/remixicon.dart';
 
 import '../../../../../localization/l10n.dart';
-import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/themes/app_styles.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../domain/models/event_model.dart';

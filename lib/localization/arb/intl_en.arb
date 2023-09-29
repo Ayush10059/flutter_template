@@ -68,5 +68,6 @@
   "designation": "Designation",
   "phone": "Phone",
   "preferredFloor": "Preferred Floor",
-  "update": "Update"
+  "update": "Update",
+  "notifications": "Notifications"
 }
